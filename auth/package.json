@@ -1,0 +1,24 @@
+{
+  "name": "unamed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/falahsuta/Projects-1-Unamed.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/falahsuta/Projects-1-Unamed/issues"
+  },
+  "homepage": "https://github.com/falahsuta/Projects-1-Unamed#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  }
+}
