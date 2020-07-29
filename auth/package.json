@@ -19,6 +19,8 @@
   "homepage": "https://github.com/falahsuta/Projects-1-Unamed#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-validator": "^6.6.0",
+    "mongoose": "^5.9.26",
     "nodemon": "^2.0.4"
   }
 }
