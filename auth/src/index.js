@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const connect = require("./connections/mongo");
 const SignupRouter = require("./routes/signup");
 const ErrorHandler = require("./middlewares/error-handler");
+const User = require("./models/User");
 
 app.use(bodyParser.json());
 
