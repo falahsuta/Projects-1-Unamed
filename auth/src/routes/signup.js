@@ -1,7 +1,9 @@
 const express = require("express");
 const { body, validationResult } = require("express-validator");
-const { ValidationError } = require("../errors/request-validation-error");
 const router = express.Router();
+
+const { ValidationError } = require("../errors/request-validation-error");
+const User = require("../models/User");
 
 router.post(
   "/api/users/signup",
