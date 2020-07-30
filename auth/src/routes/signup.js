@@ -1,8 +1,10 @@
 const express = require("express");
+require("express-async-errors");
 const { body, validationResult } = require("express-validator");
 const router = express.Router();
 
 const { ValidationError } = require("../errors/request-validation-error");
+const { BadRequestError } = require("../errors/bad-request-error");
 const User = require("../models/User");
 
 router.post(
@@ -20,7 +22,16 @@ router.post(
       throw new ValidationError(errors.array());
     }
 
-    res.send(req.body);
+    const { username, password } = req.body;
+    const isUserExist = await User.findOne({ username });
+    if (isUserExist) {
+      throw new BadRequestError("email has already been use");
+    }
+
+    const user = User({ username, password });
+    await user.save();
+
+    res.status(201).send(user);
   }
 );
 

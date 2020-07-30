@@ -15,10 +15,10 @@ class ValidationError extends Error {
   }
 }
 
-const contoh = 4;
-
+// const contoh = 4;
 // exports.ValidationError = ValidationError;
 // exports.contoh = contoh;
+
 module.exports = {
   ValidationError,
 };
