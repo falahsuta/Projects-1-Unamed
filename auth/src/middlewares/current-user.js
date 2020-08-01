@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
 
 const currentUser = (req, res, next) => {
-  console.log("this is from middlewares: " + req.session.jwt);
   if (!req.session) {
     return next();
   }
