@@ -1,5 +1,6 @@
 const express = require("express");
 require("express-async-errors");
+const jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator");
 const router = express.Router();
 
@@ -30,6 +31,19 @@ router.post(
 
     const user = User({ username, password });
     await user.save();
+
+    // JWT save in to cookie-session
+    req.session = {
+      jwt: jwt.sign(
+        {
+          id: user.id,
+          username: user.username,
+        },
+        "key"
+      ),
+    };
+
+    console.log(req.session.jwt);
 
     res.status(201).send(user);
   }

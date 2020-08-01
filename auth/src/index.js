@@ -1,19 +1,30 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-
+const cookieSession = require("cookie-session");
 const connect = require("./connections/mongo");
 const SignupRouter = require("./routes/signup");
 const ErrorHandler = require("./middlewares/error-handler");
-const User = require("./models/User");
-
-app.use(bodyParser.json());
+const CurrentUserRouter = require("./routes/current-user");
+const SignOutRouter = require("./routes/signout");
 
 connect();
 
+app.use(bodyParser.json());
+app.set("trust proxy", true);
+app.use(
+  cookieSession({
+    signed: false,
+    secure: false,
+  })
+);
+
+// Current User Router and Wiring up Cookie Session
+app.use(CurrentUserRouter);
 app.use(SignupRouter);
 app.use(ErrorHandler);
+app.use(SignOutRouter);
 
-app.listen(4000, () => {
-  console.log("auth-service listen on port 4000");
+app.listen(4001, () => {
+  console.log("auth-service listen on port 4001");
 });
