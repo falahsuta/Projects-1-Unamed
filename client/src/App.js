@@ -1,10 +1,7 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Dashboard from "./Dashboard/Dashboard";
+import "./styles.css";
 
-export default () => {
-  return (
-    <div>
-      <Navbar />
-    </div>
-  );
-};
+export default function App() {
+  return <Dashboard />;
+}
