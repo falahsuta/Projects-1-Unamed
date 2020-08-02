@@ -1,7 +1,11 @@
 import React from "react";
-import Dashboard from "./Dashboard/Dashboard";
+import Switch from "./Switch";
 import "./styles.css";
 
-export default function App() {
-  return <Dashboard />;
-}
+export default () => {
+  return (
+    <React.Fragment>
+      <Switch />
+    </React.Fragment>
+  );
+};

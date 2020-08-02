@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider,
-} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { Container } from "@material-ui/core";
 
@@ -12,9 +8,6 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(1),
     },
-  },
-  palette: {
-    type: "dark",
   },
 }));
 
