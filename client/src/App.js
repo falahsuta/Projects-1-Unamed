@@ -1,9 +1,10 @@
 import React from "react";
+import Navbar from "./Navbar";
 
 export default () => {
   return (
     <div>
-      <div>test</div>
+      <Navbar />
     </div>
   );
 };
