@@ -7,8 +7,6 @@ import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      // margin: theme.spacing(1),
-      // marginLeft: "120px",
       maxWidth: "100%",
     },
   },
@@ -19,15 +17,37 @@ export default () => {
 
   return (
     <div className={classes.root}>
-      <Grid container justify="center" alignItems="center" direction="row">
-        <Grid item xs align="center">
-          <Button disableRipple={true}>Default</Button>
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        direction="row"
+        style={{ marginBottom: "4px" }}
+      >
+        <Grid
+          item
+          xs
+          align="start"
+          style={{ left: "10px", position: "relative" }}
+        >
+          <Button disableRipple={true}>MarketPlace</Button>
         </Grid>
         <Grid item xs align="center">
-          <Button disableRipple={true}>Default</Button>
+          <Button disableRipple={true}>DissCuss</Button>
         </Grid>
-        <Grid item xs align="center">
-          <Button disableRipple={true}>Default</Button>
+        <Grid item xs align="end">
+          <Button
+            style={{ right: "14px", position: "relative" }}
+            disableRipple={true}
+          >
+            SignUp
+          </Button>
+          <Button
+            style={{ right: "10px", position: "relative" }}
+            disableRipple={true}
+          >
+            Login
+          </Button>
         </Grid>
       </Grid>
     </div>

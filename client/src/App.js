@@ -1,14 +1,15 @@
 import React from "react";
-import Switch from "./Switch";
+import Switcher from "./Switcher";
 import "./styles.css";
 import { Container } from "@material-ui/core";
+import AppBar from "./AppBar";
 
 export default () => {
   return (
     <React.Fragment>
-      {/* <Container> */}
-      <Switch />
-      {/* </Container> */}
+      <Container>
+        <Switcher />
+      </Container>
     </React.Fragment>
   );
 };
