@@ -2,11 +2,14 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { Container } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      margin: theme.spacing(1),
+      // margin: theme.spacing(1),
+      // marginLeft: "120px",
+      maxWidth: "100%",
     },
   },
 }));
@@ -16,15 +19,17 @@ export default () => {
 
   return (
     <div className={classes.root}>
-      <Container>
-        <Button>Default</Button>
-        <Button color="primary">Primary</Button>
-        <Button color="secondary">Secondary</Button>
-        <Button disabled>Disabled</Button>
-        <Button href="#text-buttons" color="primary">
-          Link
-        </Button>
-      </Container>
+      <Grid container justify="center" alignItems="center" direction="row">
+        <Grid item xs align="center">
+          <Button disableRipple={true}>Default</Button>
+        </Grid>
+        <Grid item xs align="center">
+          <Button disableRipple={true}>Default</Button>
+        </Grid>
+        <Grid item xs align="center">
+          <Button disableRipple={true}>Default</Button>
+        </Grid>
+      </Grid>
     </div>
   );
 };

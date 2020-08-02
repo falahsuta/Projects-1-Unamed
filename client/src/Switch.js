@@ -10,6 +10,7 @@ import {
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import Navbar from "./Navbar";
+import { Container } from "@material-ui/core";
 
 export default () => {
   const [darkState, setDarkState] = useState(false);
@@ -33,10 +34,12 @@ export default () => {
   };
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <Switch checked={darkState} onChange={handleThemeChange} />
-      <Navbar />
-    </ThemeProvider>
+    <Container>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <Switch checked={darkState} onChange={handleThemeChange} />
+        <Navbar />
+      </ThemeProvider>
+    </Container>
   );
 };
