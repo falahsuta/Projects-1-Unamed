@@ -13,9 +13,11 @@
 const mongoose = require("mongoose");
 
 const commentSchema = new mongoose.Schema({
+  commentToId: String,
   postId: String,
   body: String,
-  replies: [{ type: mongoose.Schema.Types.ObjectId, ref: this }],
+  // replies: [{ type: mongoose.Schema.Types.ObjectId, ref: this }],
+  replies: [this],
 });
 
 const Comment = mongoose.model("Comment", commentSchema);
