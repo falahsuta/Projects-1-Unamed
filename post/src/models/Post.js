@@ -1,17 +1,17 @@
 const mongoose = require("mongoose");
+// const Post = require("./Post");
 
-const commentSchema = new mongoose.Schema({
-  body: String,
-  replies: [{ commentRefId }],
-});
+// const commentSchema = new mongoose.Schema({
+//   body: String,
+//   replies: [{ commentRefId: String }],
+// });
 
 const postSchema = new mongoose.Schema({
   title: String,
   description: String,
   content: String,
-  comments: [commentSchema],
 });
 
-const Post = mongoose.model("User", userSchema);
+const Post = mongoose.model("Post", postSchema);
 
-module.exports = User;
+module.exports = Post;

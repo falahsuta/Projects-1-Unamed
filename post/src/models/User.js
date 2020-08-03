@@ -16,13 +16,4 @@ userSchema.pre("save", async function (next) {
 
 const User = mongoose.model("User", userSchema);
 
-const user = User({ username: "aabbcc" });
-
-// user.save();
-// console.log(user.email);
-(async function run() {
-  await user.save();
-  console.log(user);
-})();
-console.log(user.password);
 module.exports = User;
