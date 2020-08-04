@@ -17,7 +17,7 @@ router.get("/api/posts", async (req, res) => {
   if (req.query.p) {
     const postId = req.query.p;
     const post = await Post.findById(postId);
-    const comments = await Comment.find({ postId });
+    let comments = await Comment.find({ postId });
 
     return res.send({
       post,

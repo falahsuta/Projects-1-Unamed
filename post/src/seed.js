@@ -2,8 +2,8 @@ const Post = require("./models/Post");
 const Comment = require("./models/Comment");
 
 const seed = async () => {
-  // Post.deleteMany({}, function (err) {});
-  // Comment.deleteMany({}, function (err) {});
+  Post.deleteMany({}, function (err) {});
+  Comment.deleteMany({}, function (err) {});
 
   const post = Post({
     title: "judul",
@@ -36,7 +36,14 @@ const seed = async () => {
     body: "ini reply reply pertama",
   });
 
+  const replyReplyReplyPertama = Comment({
+    // postId: post._id,
+    commentToId: replyReplyPertama._id,
+    body: "ini reply reply reply pertama",
+  });
+
   replyCommentPertama.replies.push(replyReplyPertama);
+  replyReplyPertama.replies.push(replyReplyReplyPertama);
   comment.replies.push(replyKeduaCommentPertama);
 
   const commentKedua = Comment({
@@ -56,6 +63,7 @@ const seed = async () => {
   comment.save();
   replyCommentPertama.save();
   replyReplyPertama.save();
+  replyReplyReplyPertama.save();
   replyKeduaCommentPertama.save();
   commentKedua.save();
   replyKomenKedua.save();
@@ -69,38 +77,38 @@ const seed = async () => {
   console.log(replyKomenKedua);
 };
 
-const seed2 = async () => {
-  // Post.deleteMany({}, function (err) {});
-  // Comment.deleteMany({}, function (err) {});
-  Post.deleteMany({}, function (err) {});
-  Comment.deleteMany({}, function (err) {});
+// const seed2 = async () => {
+//   // Post.deleteMany({}, function (err) {});
+//   // Comment.deleteMany({}, function (err) {});
+//   Post.deleteMany({}, function (err) {});
+//   Comment.deleteMany({}, function (err) {});
 
-  const post = Post({
-    title: "judul2",
-    description: "deskripsi2",
-    content: "isinya2",
-  });
+//   const post = Post({
+//     title: "judul2",
+//     description: "deskripsi2",
+//     content: "isinya2",
+//   });
 
-  const comment = Comment({
-    postId: post._id,
-    body: "ini komen pertama dari post2",
-  });
+//   const comment = Comment({
+//     postId: post._id,
+//     body: "ini komen pertama dari post2",
+//   });
 
-  const replyCommentPertama = Comment({
-    // postId: post._id,
-    commentToId: comment._id,
-    body: "ini reply komen pertama dari post2",
-  });
+//   const replyCommentPertama = Comment({
+//     // postId: post._id,
+//     commentToId: comment._id,
+//     body: "ini reply komen pertama dari post2",
+//   });
 
-  comment.replies.push(replyCommentPertama);
+//   comment.replies.push(replyCommentPertama);
 
-  post.save();
-  comment.save();
-  replyCommentPertama.save();
+//   post.save();
+//   comment.save();
+//   replyCommentPertama.save();
 
-  console.log(post);
-  console.log(comment);
-  console.log(replyCommentPertama);
-};
+//   console.log(post);
+//   console.log(comment);
+//   console.log(replyCommentPertama);
+// };
 
-module.exports = seed2;
+module.exports = seed;
