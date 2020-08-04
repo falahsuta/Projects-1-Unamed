@@ -28,6 +28,7 @@ router.get("/api/posts", async (req, res) => {
   if (req.query.c) {
     const commentId = req.query.c;
     const comment = await Comment.findById(commentId);
+    console.log(comment.replies[0].replies);
     return res.send({
       comment,
     });

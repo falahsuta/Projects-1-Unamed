@@ -32,11 +32,12 @@ router.post("/api/posts/comments", async (req, res) => {
 });
 
 router.post("/api/posts/comments/replies", async (req, res) => {
-  const comment = await Comment.findById(req.body.commentId);
+  const { body, commentToId } = req.body;
 
+  const comment = await Comment.findById(commentToId);
   const reply = Comment({
-    body: req.body.body,
-    commentToId: req.body.commentId,
+    body,
+    commentToId,
   });
 
   comment.replies.push(reply);
@@ -44,7 +45,7 @@ router.post("/api/posts/comments/replies", async (req, res) => {
   await comment.save();
   await reply.save();
 
-  res.status(201).send(comment);
+  res.status(201).send(reply);
 });
 
 module.exports = router;
