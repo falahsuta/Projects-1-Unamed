@@ -5,6 +5,7 @@ const cookieSession = require("cookie-session");
 
 const connect = require("./connections/mongo");
 const ShowPostRouter = require("./routes/show");
+const CreatePostRouter = require("./routes/create");
 const seed = require("./seed");
 
 connect();
@@ -20,6 +21,7 @@ app.use(
 );
 
 app.use(ShowPostRouter);
+app.use(CreatePostRouter);
 
 // seed();
 
