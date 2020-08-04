@@ -1,26 +1,39 @@
 const express = require("express");
-// require("express-async-errors");
+require("express-async-errors");
+const router = express.Router();
 
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 
-const router = express.Router();
+router.get("/api/posts", async (req, res) => {
+  if (req.query.p && req.query.only) {
+    const postId = req.query.p;
+    const post = await Post.findById(postId);
+    return res.send({
+      post,
+    });
+  }
 
-router.get("/api/posts/:postId", async (req, res) => {
-  const post = await Post.findById(req.params.postId);
-  let comments = await Comment.find({ postId: req.params.postId });
+  if (req.query.p) {
+    const postId = req.query.p;
+    const post = await Post.findById(postId);
+    const comments = await Comment.find({ postId });
 
-  res.send({
-    comments,
-  });
-});
+    return res.send({
+      post,
+      comments,
+    });
+  }
 
-router.get("/api/comment/:commentId", async (req, res) => {
-  let comment = await Comment.findById(req.params.commentId);
+  if (req.query.c) {
+    const commentId = req.query.c;
+    const comment = await Comment.findById(commentId);
+    return res.send({
+      comment,
+    });
+  }
 
-  res.send({
-    comment,
-  });
+  res.send({ manual: "check manual guide" });
 });
 
 module.exports = router;
