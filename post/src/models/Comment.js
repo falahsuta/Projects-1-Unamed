@@ -1,16 +1,23 @@
 const mongoose = require("mongoose");
 
 const commentSchema = new mongoose.Schema({
+  userId: String,
   commentToId: String,
   postId: String,
   body: String,
   replies: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+  date: Date,
 });
 
 var autoPopulateChildren = function (next) {
   this.populate("replies");
   next();
 };
+
+commentSchema.pre("save", async function (next) {
+  this.set("date", new Date());
+  next();
+});
 
 commentSchema
   .pre("findOne", autoPopulateChildren)

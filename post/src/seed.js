@@ -9,6 +9,7 @@ const seed = async () => {
     title: "judul",
     description: "deskripsi",
     content: "isinya",
+    tag: "study-tips",
   });
 
   const comment = Comment({

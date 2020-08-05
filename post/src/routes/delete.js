@@ -7,7 +7,10 @@ const Comment = require("../models/Comment");
 
 // router.delete("/api/posts", async (req, res) => {
 //   const { postId } = req.body;
-//   const post = await Post.deleteOne({id: postId}m);
+//   Post.deleteOne({_id: postId}, function(err) {
+// if (err) return console.error(err);
+// res.send({msg: 'deleted'})
+// })
 
 //   res.send(post);
 // });
@@ -21,5 +24,7 @@ router.delete("/api/posts/comments", async (req, res) => {
     res.send({ msg: "deleted" });
   });
 });
+
+// 5f29a41368b7242118a8f2c5 - floating around komen ketiga
 
 module.exports = router;

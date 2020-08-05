@@ -8,6 +8,7 @@ const ShowPostRouter = require("./routes/show");
 const CreatePostRouter = require("./routes/create");
 const EditPostRouter = require("./routes/edit");
 const DeletePostRotuer = require("./routes/delete");
+require("./date-util.js");
 const seed = require("./seed");
 
 connect();
@@ -28,6 +29,8 @@ app.use(EditPostRouter);
 app.use(DeletePostRotuer);
 
 // seed();
+// const now = new Date();
+// console.log(now.getTimeInfo());
 
 app.listen(4002, () => {
   console.log("post-service listen on port 4002");
