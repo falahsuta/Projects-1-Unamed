@@ -6,6 +6,7 @@ const seed = async () => {
   Comment.deleteMany({}, function (err) {});
 
   const post = Post({
+    userId: "pala",
     title: "judul",
     description: "deskripsi",
     content: "isinya",

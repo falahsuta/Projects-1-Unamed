@@ -14,8 +14,10 @@ var autoPopulateChildren = function (next) {
   next();
 };
 
-commentSchema.pre("save", async function (next) {
-  this.set("date", new Date());
+commentSchema.pre("save", function (next) {
+  if (this.isNew) {
+    this.set("date", new Date());
+  }
   next();
 });
 

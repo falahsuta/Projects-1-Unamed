@@ -10,8 +10,10 @@ const postSchema = new mongoose.Schema({
   date: Date,
 });
 
-postSchema.pre("save", async function (next) {
-  this.set("date", new Date());
+postSchema.pre("save", function (next) {
+  if (this.isNew) {
+    this.set("date", new Date());
+  }
   next();
 });
 
