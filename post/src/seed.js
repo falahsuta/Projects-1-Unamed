@@ -1,7 +1,7 @@
 const Post = require("./models/Post");
 const Comment = require("./models/Comment");
 
-const seed = async () => {
+const seed = async (num) => {
   Post.deleteMany({}, function (err) {});
   Comment.deleteMany({}, function (err) {});
 
@@ -11,6 +11,7 @@ const seed = async () => {
     description: "deskripsi",
     content: "isinya",
     tag: "study-tips",
+    testing: num,
   });
 
   const comment = Comment({

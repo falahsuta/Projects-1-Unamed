@@ -48,7 +48,23 @@ router.get("/api/posts", async (req, res) => {
     });
   }
 
-  // if (req.query.)
+  if (req.query.page && req.query.limit) {
+    const posts = await Post.paginate(
+      {},
+      { sort: "testing", page: req.query.page, limit: req.query.limit }
+    );
+
+    return res.send(posts);
+  }
+
+  if (req.query.page) {
+    const posts = await Post.paginate(
+      {},
+      { sort: "testing", page: req.query.page, limit: 3 }
+    );
+
+    return res.send(posts);
+  }
 
   const allPosts = await Post.find({});
 

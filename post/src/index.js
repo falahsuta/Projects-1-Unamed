@@ -28,9 +28,16 @@ app.use(CreatePostRouter);
 app.use(EditPostRouter);
 app.use(DeletePostRotuer);
 
+// for (let i = 0; i < 30; i++) {
+//   seed(i + 1);
+// }
 // seed();
 // const now = new Date();
 // console.log(now.getTimeInfo());
+// const Post = require("./models/Post");
+// const Comment = require("./models/Comment");
+// Post.deleteMany({}, function (err) {});
+// Comment.deleteMany({}, function (err) {});
 
 app.listen(4002, () => {
   console.log("post-service listen on port 4002");

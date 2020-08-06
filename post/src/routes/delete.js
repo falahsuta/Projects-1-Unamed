@@ -12,10 +12,10 @@ router.delete("/api/posts", async (req, res) => {
   const { postId } = req.body;
   Post.deleteOne({ _id: postId }, function (err) {
     if (err) return console.error(err);
-    res.send({ msg: "deleted" });
+    return res.send({ msg: "deleted" });
   });
 
-  res.send(post);
+  // res.send({ msg: "deleted" });
 });
 
 router.delete("/api/posts/comments", async (req, res) => {

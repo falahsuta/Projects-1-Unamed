@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const mongoosePaginate = require("mongoose-paginate-v2");
 const tagAllowedValue = require("./tag-allowed-value");
 
 const postSchema = new mongoose.Schema({
@@ -8,6 +9,7 @@ const postSchema = new mongoose.Schema({
   description: String,
   content: String,
   date: Date,
+  testing: Number,
 });
 
 postSchema.pre("save", function (next) {
@@ -16,6 +18,8 @@ postSchema.pre("save", function (next) {
   }
   next();
 });
+
+postSchema.plugin(mongoosePaginate);
 
 const Post = mongoose.model("Post", postSchema);
 
