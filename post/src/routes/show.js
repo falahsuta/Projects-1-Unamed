@@ -39,10 +39,16 @@ router.get("/api/posts", async (req, res) => {
   if (req.query.t) {
     const tag = req.query.t;
     const posts = await Post.find({ tag });
+
+    // const total = await Post.find({}).estimatedDocumentCount();
+    // console.log(total);
+
     return res.send({
       posts,
     });
   }
+
+  // if (req.query.)
 
   const allPosts = await Post.find({});
 
