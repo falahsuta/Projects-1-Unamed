@@ -6,6 +6,7 @@ const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 const UpvotesPost = require("../models/UpvotesPost");
 const UpvotesComment = require("../models/UpvotesComment");
+const Favourite = require("../models/Favourite");
 
 router.get("/api/posts", async (req, res) => {
   if (req.query.p && req.query.only) {
@@ -30,7 +31,7 @@ router.get("/api/posts", async (req, res) => {
   if (req.query.c) {
     const commentId = req.query.c;
     const comment = await Comment.findById(commentId);
-    // console.log(comment.replies[0].replies);
+
     return res.send({
       comment,
     });
@@ -40,12 +41,18 @@ router.get("/api/posts", async (req, res) => {
     const tag = req.query.t;
     const posts = await Post.find({ tag });
 
-    // const total = await Post.find({}).estimatedDocumentCount();
-    // console.log(total);
-
     return res.send({
       posts,
     });
+  }
+
+  if (req.query.page && req.query.limit && req.query.t) {
+    const posts = await Post.paginate(
+      { tag: req.query.t },
+      { sort: "testing", page: req.query.page, limit: req.query.limit }
+    );
+
+    return res.send(posts);
   }
 
   if (req.query.page && req.query.limit) {
@@ -66,10 +73,22 @@ router.get("/api/posts", async (req, res) => {
     return res.send(posts);
   }
 
-  const allPosts = await Post.find({});
+  if (req.query.myposts && req.query.uid) {
+    const posts = await Post.find({
+      userId: req.query.uid,
+    });
 
-  res.send({ posts: allPosts });
-  // res.send({ manual: "check manual guide" });
+    return res.send({
+      posts,
+    });
+  }
+
+  if (req.query.allposts) {
+    const posts = await Post.find({});
+    return res.send({ posts });
+  }
+
+  res.send({ msg: "please specify query" });
 });
 
 router.get("/api/posts/upvotes", async (req, res) => {
@@ -84,13 +103,32 @@ router.get("/api/posts/upvotes", async (req, res) => {
   if (req.query.cid) {
     const commentId = req.query.cid;
     const comment_upvote = await UpvotesComment.findOne({ commentId });
-    // console.log(comment_upvote);
+
     return res.send({
       comment_upvote,
     });
   }
 
   res.send({ manual: "check manual guide" });
+});
+
+router.get("/api/posts/favourite", async (req, res) => {
+  // helper only
+  if (req.query.allfav) {
+    const favourite = await Favourite.find({});
+    return res.send({
+      favourite,
+    });
+  }
+
+  const favourite = await Favourite.findOne({
+    userId: req.query.uid,
+  });
+
+  // if (req.currentUser.id === favourite.userId)
+  res.send({
+    favourite,
+  });
 });
 
 module.exports = router;

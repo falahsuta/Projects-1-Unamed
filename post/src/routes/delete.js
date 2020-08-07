@@ -5,6 +5,7 @@ const router = express.Router();
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 
+const Favourite = require("../models/Favourite");
 const UpvotesPost = require("../models/UpvotesPost");
 const UpvotesComment = require("../models/UpvotesComment");
 
@@ -37,6 +38,8 @@ router.delete("/api/posts/upvotes", async (req, res) => {
       return element !== userId;
     });
 
+    // post_upvote.splice(post_upvote.userId.indexOf(userId), 1);
+
     await post_upvote.save();
 
     // return res.send({
@@ -66,6 +69,78 @@ router.delete("/api/posts/upvotes", async (req, res) => {
     });
   }
 });
+
+router.delete("/api/posts/favourite/bookmarks", async (req, res) => {
+  const { userId, postId } = req.body;
+  const user = await Favourite.findOne({ userId });
+
+  const index = user.postId.indexOf(postId);
+  if (index !== -1) {
+    user.postId.splice(index, 1);
+    await user.save();
+
+    return res.send({
+      user,
+    });
+  }
+  res.send({
+    msg: "bookmark not found",
+  });
+});
+
+router.delete("/api/posts/favourite/tags", async (req, res) => {
+  const { userId, tag } = req.body;
+  const user = await Favourite.findOne({ userId });
+
+  const index = user.tag.indexOf(tag);
+  if (index !== -1) {
+    user.tag.splice(index, 1);
+    await user.save();
+
+    return res.send({
+      user,
+    });
+  }
+  res.send({
+    msg: "tag not found",
+  });
+});
+
+// router.post("/api/posts/favourite/tags", async (req, res) => {
+//   const { userId, tag } = req.body;
+//   const user = await Favourite.findOne({ userId });
+
+//   if (!tagAllowedValue.includes(tag)) {
+//     return res.send({
+//       msg: "tags name not allowed",
+//     });
+//   }
+
+//   if (!user) {
+//     const favourite = Favourite({
+//       userId,
+//     });
+//     favourite.tag.push(tag);
+//     favourite.save();
+
+//     return res.send({
+//       favourite,
+//     });
+//   }
+
+//   if (user.tag.includes(tag)) {
+//     return res.send({
+//       user,
+//     });
+//   }
+
+//   user.tag.push(tag);
+//   user.save();
+
+//   return res.send({
+//     user,
+//   });
+// });
 
 // 5f29a41368b7242118a8f2c5 - floating around komen ketiga
 

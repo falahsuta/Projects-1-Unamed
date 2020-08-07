@@ -34,5 +34,10 @@ Date.prototype.getTimeInfo = function () {
 
 // console.log(now.getTimeInfo());
 
-const a = new Date("2020-08-06T12:49:33.944Z");
-console.log(a.getTimeInfo());
+// const a = new Date("2020-08-06T12:49:33.944Z");
+// console.log(a.getTimeInfo());
+
+var a = [1, 2, 3, 4, 5];
+// console.log(a.indexOf(9));
+// a.splice(a.indexOf(9), 1);
+console.log(a[-1]);
