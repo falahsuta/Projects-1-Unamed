@@ -4,8 +4,10 @@ const jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator");
 const router = express.Router();
 
-const { ValidationError } = require("../errors/request-validation-error");
-const { BadRequestError } = require("../errors/bad-request-error");
+const common_path = "../../../common";
+const { ValidationError } = require(common_path +
+  "/errors/request-validation-error");
+const { BadRequestError } = require(common_path + "/errors/bad-request-error");
 const Password = require("../services/password");
 const User = require("../models/User");
 

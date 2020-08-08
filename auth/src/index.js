@@ -8,7 +8,7 @@ const CurrentUserRouter = require("./routes/current-user");
 const SignupRouter = require("./routes/signup");
 const SignInRouter = require("./routes/signin");
 const SignOutRouter = require("./routes/signout");
-const ErrorHandler = require("./middlewares/error-handler");
+const ErrorHandler = require("../../common/middlewares/error-handler");
 
 connect();
 
