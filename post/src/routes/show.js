@@ -9,6 +9,7 @@ const UpvotesComment = require("../models/UpvotesComment");
 const Favourite = require("../models/Favourite");
 
 router.get("/api/posts", async (req, res) => {
+  console.log(req.currentUser);
   if (req.query.p && req.query.only) {
     const postId = req.query.p;
     const post = await Post.findById(postId);
@@ -73,9 +74,12 @@ router.get("/api/posts", async (req, res) => {
     return res.send(posts);
   }
 
-  if (req.query.myposts && req.query.uid) {
+  if (req.query.myposts) {
+    if (!req.currentUser) {
+      return res.send({ msg: "temporary error handling" });
+    }
     const posts = await Post.find({
-      userId: req.query.uid,
+      userId: req.currentUser.id,
     });
 
     return res.send({

@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
 
 const connect = require("./connections/mongo");
+const mockAuthorization = require("./middlewares/mock-authorization");
 const ShowPostRouter = require("./routes/show");
 const CreatePostRouter = require("./routes/create");
 const EditPostRouter = require("./routes/edit");
@@ -23,10 +24,17 @@ app.use(
   })
 );
 
+app.use(mockAuthorization);
+console.log("A?");
+
 app.use(ShowPostRouter);
 app.use(CreatePostRouter);
 app.use(EditPostRouter);
 app.use(DeletePostRotuer);
+
+app.listen(4002, () => {
+  console.log("post-service listen on port 4002");
+});
 
 // for (let i = 0; i < 30; i++) {
 //   seed(i + 1);
@@ -38,7 +46,3 @@ app.use(DeletePostRotuer);
 // const Comment = require("./models/Comment");
 // Post.deleteMany({}, function (err) {});
 // Comment.deleteMany({}, function (err) {});
-
-app.listen(4002, () => {
-  console.log("post-service listen on port 4002");
-});
