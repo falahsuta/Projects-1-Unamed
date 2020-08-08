@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "./AppBar";
 import Switch from "@material-ui/core/Switch";
-import Box from "@material-ui/core/Box";
+
 import Divider from "@material-ui/core/Divider";
 import {
   orange,
@@ -13,9 +13,11 @@ import {
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-
 import { Container } from "@material-ui/core";
+
 import PostCard from "./PostCard";
+import CardModel from "./CardModel";
+import CardTest from "./CardTest";
 
 export default () => {
   const [darkState, setDarkState] = useState(true);
@@ -56,28 +58,33 @@ export default () => {
               variant="middle"
             />
           </Typography>
-          <Box my={2}>
-            <Grid
-              container
-              direction="row"
-              justify="space-around"
-              alignItems="center"
-            >
-              <Grid item xs>
-                <PostCard />
-              </Grid>
-              <Grid item xs>
-                <PostCard />
-              </Grid>
-              <Grid item xs>
-                <PostCard />
-              </Grid>
-              <Grid item xs>
-                <PostCard />
-              </Grid>
+          {/* <Box my={2}> */}
+          <Grid
+            container
+            direction="row"
+            justify="space-around"
+            alignItems="center"
+          >
+            <Grid item xs={12} sm={6} md={3}>
+              <PostCard />
             </Grid>
-          </Box>
+            <Grid item xs={12} sm={6} md={3}>
+              <PostCard />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <PostCard />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <PostCard />
+            </Grid>
+          </Grid>
+          {/* </Box> */}
+          <br />
+          <CardModel />
+          <br />
+          <CardTest />
         </Container>
+
         <div style={{ marginTop: "320px" }}></div>
 
         <Switch checked={darkState} onChange={handleThemeChange} />
