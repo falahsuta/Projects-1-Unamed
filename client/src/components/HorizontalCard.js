@@ -3,17 +3,15 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-
 import Typography from "@material-ui/core/Typography";
-
 import CardActionArea from "@material-ui/core/CardActionArea";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    width: 385,
-    height: 120,
-    // backgroundColor: "transparent",
+    width: 355,
+    height: 105,
+    backgroundColor: "transparent",
   },
   details: {
     display: "flex",
@@ -23,11 +21,11 @@ const useStyles = makeStyles((theme) => ({
     flex: "1 0 auto",
   },
   cover: {
-    marginTop: "14px",
-    marginLeft: "12px",
     borderRadius: "2px",
-    width: 151,
-    height: 90,
+    width: 145,
+    // marginTop: "14px",
+    // marginLeft: "12px",
+    // height: 90,
   },
   controls: {
     display: "flex",
@@ -41,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MediaControlCard() {
+export default () => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -49,7 +47,8 @@ export default function MediaControlCard() {
     <Card className={classes.root} elevation={0} style={{ cursor: "pointer" }}>
       <CardMedia
         className={classes.cover}
-        image="https://source.unsplash.com/random"
+        // image="https://source.unsplash.com/random"
+        image="https://images.unsplash.com/photo-1539321908154-04927596764d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80"
         title="Live from space album cover"
       />
       <CardActionArea>
@@ -67,4 +66,4 @@ export default function MediaControlCard() {
       </CardActionArea>
     </Card>
   );
-}
+};

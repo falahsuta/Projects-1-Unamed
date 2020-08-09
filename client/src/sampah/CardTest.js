@@ -22,10 +22,7 @@ export default function MediaCard() {
   const classes = useStyles();
 
   return (
-    <Card
-      className={classes.root}
-      // style={{ backgroundColor: "lig" }}
-    >
+    <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -45,10 +42,7 @@ export default function MediaCard() {
             <Typography gutterBottom variant="h6" component="h2">
               Is lizard from aliens?
             </Typography>
-            {/* <Typography variant="caption" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography> */}
+
             <Typography variant="caption" color="textSecondary" component="p">
               Lizards are a widespread group of squamate reptiles, with over
               6,000 species, ranging across all continents except Antarctica.
