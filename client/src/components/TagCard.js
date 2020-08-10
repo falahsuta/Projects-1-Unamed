@@ -62,7 +62,8 @@ export const NewsCard2Demo = React.memo(function NewsCard2() {
       <CardMedia
         classes={mediaStyles}
         image={
-          "https://images.unsplash.com/photo-1519810755548-39cd217da494?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+          // "https://images.unsplash.com/photo-1519810755548-39cd217da494?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+          "https://music-artwork.com/wp-content/uploads/2020/05/preview_artwork46.jpg"
         }
       />
       <CardActionArea>

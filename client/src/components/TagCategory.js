@@ -10,6 +10,8 @@ import {
 import { useDynamicAvatarStyles } from "@mui-treasury/styles/avatar/dynamic";
 import { useD01InfoStyles } from "@mui-treasury/styles/info/d01";
 import Typography from "@material-ui/core/Typography";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import { Link } from "react-router-dom";
 
 export default React.memo(function DarkRapListItem() {
   const avatarStyles = useDynamicAvatarStyles({ size: 70 });
@@ -29,8 +31,26 @@ export default React.memo(function DarkRapListItem() {
       caption: "Bizzare Things Around",
     },
     // "COOL",
+    {
+      name: "Cool",
+      link:
+        "https://music-artwork.com/wp-content/uploads/2018/04/artwork_music-2.jpg",
+      caption: "The coolest thing you'd find",
+    },
     // "INFORMATIVE",
+    {
+      name: "Informative",
+      link:
+        "https://music-artwork.com/wp-content/uploads/2020/05/preview_artwork34-1.jpg",
+      caption: "You'll find it useful",
+    },
     // "TECH",
+    // {
+    //   name: "Tech",
+    //   link:
+    //     "https://music-artwork.com/wp-content/uploads/2020/06/preview_artwork87.jpg",
+    //   caption: "Makes you a Techie geek",
+    // },
     // "RNB",
     // "SOUL",
     // "POP",
@@ -38,7 +58,7 @@ export default React.memo(function DarkRapListItem() {
   ];
   const renderTag = tags.map((tag) => {
     return (
-      <Row>
+      <Row mt={1}>
         <Item>
           <Avatar variant={"rounded"} classes={avatarStyles} src={tag.link} />
         </Item>
@@ -47,7 +67,7 @@ export default React.memo(function DarkRapListItem() {
           <InfoTitle>
             <Typography color="textPrimary">{tag.name}</Typography>
           </InfoTitle>
-          <InfoCaption>{`t/${tag.name.toLowerCase()}`}</InfoCaption>
+          <InfoCaption>{`t/${tag.name.toLowerCase()}`}></InfoCaption>
         </Info>
       </Row>
     );

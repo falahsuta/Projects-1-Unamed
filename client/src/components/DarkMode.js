@@ -38,7 +38,8 @@ export default (props) => {
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         {props.children}
-        <div style={{ marginTop: "320px" }}></div>
+        {/* <div style={{ marginTop: "320px" }}></div> */}
+        <div style={{ marginTop: "720px" }}></div>
         <Switch checked={darkState} onChange={handleThemeChange} />
       </ThemeProvider>
     </Container>

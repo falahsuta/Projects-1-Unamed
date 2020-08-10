@@ -6,6 +6,15 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import GoogleFontLoader from "react-google-font-loader";
 import NoSsr from "@material-ui/core/NoSsr";
+import { useDynamicAvatarStyles } from "@mui-treasury/styles/avatar/dynamic";
+import { useD01InfoStyles } from "@mui-treasury/styles/info/d01";
+import {
+  Info,
+  InfoTitle,
+  InfoSubtitle,
+  InfoCaption,
+} from "@mui-treasury/components/info";
+import Sticky from "react-stickynode";
 
 import HorizontalCard from "./HorizontalCard";
 import TagCard from "./TagCard";
@@ -57,7 +66,7 @@ export default () => {
       <GoogleFontLoader fonts={[{ font: "Barlow", weights: [400, 600] }]} />
       {/* </NoSsr> */}
       <Container>
-        <Typography gutterBottom variant="h5" component="h2">
+        {/* <Typography gutterBottom variant="h5" component="h2">
           Trending Today
           <Divider
             style={{
@@ -68,7 +77,14 @@ export default () => {
             }}
             variant="middle"
           />
-        </Typography>
+        </Typography> */}
+        <Info useStyles={useD01InfoStyles} mb={1}>
+          <InfoTitle>
+            <Typography color="textPrimary">
+              {"Trending Today".toUpperCase()}
+            </Typography>
+          </InfoTitle>
+        </Info>
       </Container>
       <Grid
         container
@@ -86,13 +102,33 @@ export default () => {
           </div>
         </Grid>
         <Grid item xs={4}>
-          <div>
-            <Paper style={{ width: "84%", marginLeft: "33px" }}>
-              <TagCategory />
-            </Paper>
-          </div>
+          <Sticky enabled={true} top={20}>
+            <div>
+              <Paper
+                position="sticky"
+                style={{
+                  width: "84%",
+                  marginLeft: "33px",
+                }}
+              >
+                <TagCategory />
+              </Paper>
+            </div>
+          </Sticky>
         </Grid>
       </Grid>
+      {/* <br />
+      <br />
+      <br />
+      <Container>
+        <Info useStyles={useD01InfoStyles} mb={1}>
+          <InfoTitle>
+            <Typography color="textPrimary">
+              {"Popular".toUpperCase()}
+            </Typography>
+          </InfoTitle>
+        </Info>
+      </Container> */}
     </React.Fragment>
   );
 };

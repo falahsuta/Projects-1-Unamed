@@ -43,7 +43,12 @@ export default (props) => {
           <Toolbar className={classes.root}>
             <Container>
               <Navbar />
-              <Divider style={{ marginTop: "3px" }} variant="middle" />
+              <Divider
+                style={{ marginTop: "3px" }}
+                variant="middle"
+                light
+                variant="fullWidth"
+              />
             </Container>
           </Toolbar>
         </AppBar>
