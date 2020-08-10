@@ -22,11 +22,11 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flex: "1 0 auto",
     position: "absolute",
-    bottom: "-8px",
+    top: "-2px",
     // marginBottom: "40px",
   },
   cover: {
-    borderRadius: "2px",
+    borderRadius: "3px",
     width: 145,
     // marginTop: "14px",
     // marginLeft: "12px",
@@ -44,16 +44,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default () => {
+export default (props) => {
   const classes = useStyles();
   const theme = useTheme();
 
   return (
     <>
       {/* <NoSsr> */}
-      {/* <GoogleFontLoader
-        fonts={[{ font: "Roboto Mono", weights: [400, 600] }]}
-      /> */}
+      <GoogleFontLoader fonts={[{ font: "Barlow", weights: [400, 600] }]} />
       {/* </NoSsr> */}
       <Card
         className={classes.root}
@@ -63,14 +61,16 @@ export default () => {
         <CardMedia
           className={classes.cover}
           // image="https://source.unsplash.com/random"
-          image="https://images.unsplash.com/photo-1539321908154-04927596764d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80"
+          // image="https://images.unsplash.com/photo-1539321908154-04927596764d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80"
+          image={props.imglink}
           title="Live from space album cover"
         />
         <CardActionArea>
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <Typography variant="subtitle2">
-                The Big Bang may be a black hole inside another universe
+                {/* The Big Bang may be a black hole inside another universe */}
+                {props.title}
               </Typography>
               <br />
               <Typography variant="caption" color="textSecondary">

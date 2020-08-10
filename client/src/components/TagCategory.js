@@ -30,7 +30,7 @@ export default React.memo(function DarkRapListItem() {
           <InfoTitle>
             <Typography color="textPrimary">Quirk</Typography>
           </InfoTitle>
-          <InfoCaption>t/quirk</InfoCaption>
+          <InfoCaption>t/quirk ></InfoCaption>
         </Info>
       </Row>
       <Row mt={1}>

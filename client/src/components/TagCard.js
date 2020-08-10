@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
   root: {
     maxWidth: 354,
     margin: "auto",
-    borderRadius: 4,
+    borderRadius: 5,
     position: "relative",
   },
   content: {
