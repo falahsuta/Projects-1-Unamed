@@ -13,44 +13,45 @@ import Typography from "@material-ui/core/Typography";
 
 export default React.memo(function DarkRapListItem() {
   const avatarStyles = useDynamicAvatarStyles({ size: 70 });
-  return (
-    <Column gap={2}>
+  // https://music-artwork.com/wp-content/uploads/2020/06/preview_artwork072.jpg
+  // https://music-artwork.com/wp-content/uploads/2018/04/dec110.jpg ==>> rnb
+  const tags = [
+    {
+      name: "Quirk",
+      link:
+        "https://shopage.s3.amazonaws.com/media/f855/580321926366_PEnByxR6Xdn7soyNMiGPG4ZPMng1N4CN4D4XvB7j.jpg",
+      caption: "Most Popular Genre Around",
+    },
+    {
+      name: "Bizzare",
+      link:
+        "https://music-artwork.com/wp-content/uploads/2020/05/preview_artwork55.jpg",
+      caption: "Bizzare Things Around",
+    },
+    // "COOL",
+    // "INFORMATIVE",
+    // "TECH",
+    // "RNB",
+    // "SOUL",
+    // "POP",
+    // "STUDY_TIPS",
+  ];
+  const renderTag = tags.map((tag) => {
+    return (
       <Row>
         <Item>
-          <Avatar
-            variant={"rounded"}
-            classes={avatarStyles}
-            src={
-              "https://shopage.s3.amazonaws.com/media/f855/580321926366_PEnByxR6Xdn7soyNMiGPG4ZPMng1N4CN4D4XvB7j.jpg"
-            }
-          />
+          <Avatar variant={"rounded"} classes={avatarStyles} src={tag.link} />
         </Item>
         <Info useStyles={useD01InfoStyles}>
-          <InfoCaption>Most Popular Genre Around</InfoCaption>
+          <InfoCaption>{tag.caption}</InfoCaption>
           <InfoTitle>
-            <Typography color="textPrimary">Quirk</Typography>
+            <Typography color="textPrimary">{tag.name}</Typography>
           </InfoTitle>
-          <InfoCaption>t/quirk ></InfoCaption>
+          <InfoCaption>{`t/${tag.name.toLowerCase()}`}</InfoCaption>
         </Info>
       </Row>
-      <Row mt={1}>
-        <Item>
-          <Avatar
-            variant={"rounded"}
-            classes={avatarStyles}
-            src={
-              "https://music-artwork.com/wp-content/uploads/2018/04/dec110.jpg"
-            }
-          />
-        </Item>
-        <Info useStyles={useD01InfoStyles}>
-          <InfoCaption>Most hit RNB Music Around</InfoCaption>
-          <InfoTitle>
-            <Typography color="textPrimary">RNB</Typography>
-          </InfoTitle>
-          <InfoCaption>t/rnb</InfoCaption>
-        </Info>
-      </Row>
-    </Column>
-  );
+    );
+  });
+
+  return <Column gap={2}>{renderTag}</Column>;
 });

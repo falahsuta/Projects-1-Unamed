@@ -38,6 +38,25 @@ export const NewsCard2Demo = React.memo(function NewsCard2() {
   const styles = useStyles();
   const mediaStyles = useCoverCardMediaStyles();
   const shadowStyles = useLightTopShadowStyles();
+  const tags = [
+    {
+      name: "Space",
+      bigcapt: "The space between the stars and galaxies is largely empty.",
+      imglink:
+        "https://images.unsplash.com/photo-1519810755548-39cd217da494?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
+    },
+    // 'BIZZARE',
+    // 'COOL',
+    // 'INFORMATIVE',
+    // 'TECH',
+    // 'RNB',
+    // 'SOUL',
+    // 'POP',
+    // 'STUDY_TIPS',
+  ];
+
+  const choosen = tags[Math.floor(Math.random() * tags.length)];
+
   return (
     <Card className={cx(styles.root, shadowStyles.root)}>
       <CardMedia
@@ -57,8 +76,8 @@ export const NewsCard2Demo = React.memo(function NewsCard2() {
             color={"common.white"}
             textAlign={"center"}
           >
-            <h1 className={styles.title}>Space</h1>
-            <p>The space between the stars and galaxies is largely empty.</p>
+            <h1 className={styles.title}>{`t/${choosen.name}`}</h1>
+            <p>{choosen.bigcapt}</p>
           </Box>
           <Typography className={styles.cta} variant={"overline"}>
             Explore

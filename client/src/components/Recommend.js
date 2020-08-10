@@ -1,6 +1,6 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import { Container, requirePropFactory } from "@material-ui/core";
+import { Container, requirePropFactory, Card } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -12,6 +12,45 @@ import TagCard from "./TagCard";
 import TagCategory from "./TagCategory";
 
 export default () => {
+  const dataMiddle = [
+    {
+      title: "The Big Bang may be a black hole inside another universe",
+      imglink:
+        "https://images.unsplash.com/photo-1539321908154-04927596764d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80",
+      tag: "Space",
+    },
+    {
+      title: "The Dark Forest Theory of the Universe",
+      imglink: "https://miro.medium.com/max/1944/1*aLGt-w4m0dhJpAP6K4Abqg.jpeg",
+      tag: "Wild",
+    },
+    {
+      title: "Is the Universe Real? And Experiment Towards",
+      imglink: "https://miro.medium.com/max/1200/1*zHHvldZopy8y1YcKYez57Q.jpeg",
+      tag: "Philosophy",
+    },
+  ];
+  const datalength = dataMiddle.length - 1;
+  const renderMiddle = dataMiddle.map((element, index) => {
+    return (
+      <>
+        <HorizontalCard
+          title={element.title}
+          imglink={element.imglink}
+          tag={element.tag}
+        />
+        <Divider
+          style={{
+            margin: "13px 0",
+            width: "355px",
+            display: index === datalength ? "none" : undefined,
+          }}
+          variant="middle"
+        />
+      </>
+    );
+  });
+
   return (
     <React.Fragment>
       {/* <NoSsr> */}
@@ -43,37 +82,11 @@ export default () => {
         </Grid>
         <Grid item xs={4}>
           <div style={{ marginLeft: "30px", marginTop: "10px" }}>
-            <HorizontalCard
-              title="The Big Bang may be a black hole inside another universe"
-              imglink="https://images.unsplash.com/photo-1539321908154-04927596764d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80"
-            />
-            <Divider
-              style={{ margin: "13px 0", width: "355px" }}
-              variant="middle"
-            />
-            <HorizontalCard
-              title="The Dark Forest Theory of the Universe"
-              imglink="https://miro.medium.com/max/1944/1*aLGt-w4m0dhJpAP6K4Abqg.jpeg"
-            />
-            <Divider
-              style={{ margin: "13px 0", width: "355px" }}
-              variant="middle"
-            />
-            <HorizontalCard
-              title="Is the Universe Real? And Experiment Towards"
-              imglink="https://miro.medium.com/max/1200/1*zHHvldZopy8y1YcKYez57Q.jpeg"
-            />
+            {renderMiddle}
           </div>
         </Grid>
         <Grid item xs={4}>
-          <div
-          // style={{
-          //   marginLeft: "40px",
-          //   position: "absolute",
-          //   bottom: "15px",
-          // }}
-          >
-            {/* <Paper style={{ width: "118%" }}> */}
+          <div>
             <Paper style={{ width: "84%", marginLeft: "33px" }}>
               <TagCategory />
             </Paper>

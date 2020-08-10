@@ -17,18 +17,23 @@ export default ({ currentUser }) => {
   const classes = useStyles();
 
   const links = [
-    currentUser && { label: "Sign Up", href: "/auth/signup" },
-    currentUser && { label: "Sign In", href: "/auth/signin" },
-    !currentUser && { label: "Sign Out", href: "/auth/signout" },
+    !currentUser && { label: "SignUp", href: "/auth/signup" },
+    !currentUser && { label: "Login", href: "/auth/signin" },
+    currentUser && { label: "Account", href: "/auth//account" },
+    currentUser && { label: "Logout", href: "/auth/signout" },
   ]
     .filter((linkConfig) => linkConfig)
-    .map(({ label, href }) => {
+    .map(({ label, href }, index) => {
       return (
-        <li key={href} className="nav-item">
-          <Link href={href}>
-            <a className="nav-link">{label}</a>
-          </Link>
-        </li>
+        <Button
+          style={{
+            right: index % 2 === 1 ? "10px" : "14px",
+            position: "relative",
+          }}
+          disableRipple={true}
+        >
+          {label}
+        </Button>
       );
     });
 
@@ -53,22 +58,7 @@ export default ({ currentUser }) => {
           <Button disableRipple={true}>DissCuss</Button>
         </Grid>
         <Grid item xs align="end">
-          {!currentUser && (
-            <React.Fragment>
-              <Button
-                style={{ right: "14px", position: "relative" }}
-                disableRipple={true}
-              >
-                SignUp
-              </Button>
-              <Button
-                style={{ right: "10px", position: "relative" }}
-                disableRipple={true}
-              >
-                Login
-              </Button>
-            </React.Fragment>
-          )}
+          {links}
         </Grid>
       </Grid>
     </div>
