@@ -5,8 +5,6 @@ import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import GoogleFontLoader from "react-google-font-loader";
-import NoSsr from "@material-ui/core/NoSsr";
-import { useDynamicAvatarStyles } from "@mui-treasury/styles/avatar/dynamic";
 import { useD01InfoStyles } from "@mui-treasury/styles/info/d01";
 import {
   Info,
@@ -15,10 +13,14 @@ import {
   InfoCaption,
 } from "@mui-treasury/components/info";
 import Sticky from "react-stickynode";
+// import Sticky from "react-sticky-el";
+import NoSsr from "@material-ui/core/NoSsr";
+import { useDynamicAvatarStyles } from "@mui-treasury/styles/avatar/dynamic";
 
 import HorizontalCard from "./HorizontalCard";
 import TagCard from "./TagCard";
 import TagCategory from "./TagCategory";
+import "./smooth.css";
 
 export default () => {
   const dataMiddle = [
@@ -66,18 +68,6 @@ export default () => {
       <GoogleFontLoader fonts={[{ font: "Barlow", weights: [400, 600] }]} />
       {/* </NoSsr> */}
       <Container>
-        {/* <Typography gutterBottom variant="h5" component="h2">
-          Trending Today
-          <Divider
-            style={{
-              marginTop: "5px",
-              marginBottom: "21px",
-              width: "180px",
-              transform: "translate(-0.8em, 0)",
-            }}
-            variant="middle"
-          />
-        </Typography> */}
         <Info useStyles={useD01InfoStyles} mb={1}>
           <InfoTitle>
             <Typography color="textPrimary">
@@ -102,10 +92,10 @@ export default () => {
           </div>
         </Grid>
         <Grid item xs={4}>
-          <Sticky enabled={true} top={20}>
+          <Sticky top={20} enableTransforms={false}>
             <div>
               <Paper
-                position="sticky"
+                className="unblur-1 unblur-2"
                 style={{
                   width: "84%",
                   marginLeft: "33px",

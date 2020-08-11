@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
+const cors = require("cors");
 
 const connect = require("./connections/mongo");
 const mockAuthorization = require("./middlewares/mock-authorization");
@@ -14,6 +15,7 @@ const seed = require("./seed");
 
 connect();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.set("trust proxy", true);
 app.use(
@@ -25,7 +27,7 @@ app.use(
 );
 
 app.use(mockAuthorization);
-console.log("A?");
+// console.log("A?");
 
 app.use(ShowPostRouter);
 app.use(CreatePostRouter);
