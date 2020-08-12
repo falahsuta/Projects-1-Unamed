@@ -153,9 +153,25 @@ router.get("/api/posts/mock", async (req, res) => {
       imglink: "https://miro.medium.com/max/1200/1*zHHvldZopy8y1YcKYez57Q.jpeg",
       tag: "Philosophy",
     },
+    {
+      title: "The Big Bang may be a black hole inside another universe kedua",
+      imglink:
+        "https://images.unsplash.com/photo-1539321908154-04927596764d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80",
+      tag: "Space",
+    },
+    {
+      title: "The Dark Forest Theory of the Universe kedua",
+      imglink: "https://miro.medium.com/max/1944/1*aLGt-w4m0dhJpAP6K4Abqg.jpeg",
+      tag: "Wild",
+    },
+    {
+      title: "Is the Universe Real? And Experiment Towards kedua",
+      imglink: "https://miro.medium.com/max/1200/1*zHHvldZopy8y1YcKYez57Q.jpeg",
+      tag: "Philosophy",
+    },
   ];
 
-  res.send({ docs: [...dataMiddle, ...dataMiddle] });
+  res.send({ docs: dataMiddle, totalDocs: 30 });
 });
 
 module.exports = router;

@@ -7,6 +7,9 @@ import axios from "axios";
 import { Container } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 
+import SkeletonCard from "./SkeletonCard";
+import GridOfCard from "./GridOfCard";
+
 const style = {
   height: 30,
   border: "1px solid green",
@@ -15,51 +18,15 @@ const style = {
 };
 
 const Scroll2Fetch = () => {
-  const dataMiddle = [
-    {
-      title: "The Big Bang may be a black hole inside another universe",
-      imglink:
-        "https://images.unsplash.com/photo-1539321908154-04927596764d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80",
-      tag: "Space",
-    },
-    {
-      title: "The Dark Forest Theory of the Universe",
-      imglink: "https://miro.medium.com/max/1944/1*aLGt-w4m0dhJpAP6K4Abqg.jpeg",
-      tag: "Wild",
-    },
-    {
-      title: "Is the Universe Real? And Experiment Towards",
-      imglink: "https://miro.medium.com/max/1200/1*zHHvldZopy8y1YcKYez57Q.jpeg",
-      tag: "Philosophy",
-    },
-  ];
-  const datalength = dataMiddle.length - 1;
-  const renderMiddle = dataMiddle.map((element, index) => {
-    return (
-      <>
-        <HorizontalCard
-          title={element.title}
-          imglink={element.imglink}
-          tag={element.tag}
-        />
-        <Divider
-          light
-          style={{
-            margin: "13px 0",
-            height: index === 0 ? "0.6px" : "1px",
-            width: "355px",
-            display: index === datalength ? "none" : undefined,
-          }}
-          // variant="middle"
-        />
-      </>
-    );
-  });
-
   const [items, setItems] = useState([]);
   const [currIdx, setCurrIdx] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [totalDocument, setTotalDocument] = useState(40);
+
+  // useEffect(async () => {
+  //   const response = await axios.get("http://localhost:4002/api/posts/mock");
+  //   setItems(response.data.docs);
+  // }, []);
 
   const fetchMoredata = async () => {
     if (items.length >= totalDocument) {
@@ -68,7 +35,7 @@ const Scroll2Fetch = () => {
     }
 
     const response = await axios.get(
-      `http://localhost:4002/api/posts/?limit=6&page=${currIdx}`
+      `http://localhost:4002/api/posts/mock/?limit=6&page=${currIdx}`
     );
     setItems((prevItems) => prevItems.concat(response.data.docs));
     setCurrIdx((prevIndex) => prevIndex + 1);
@@ -77,30 +44,15 @@ const Scroll2Fetch = () => {
 
   useEffect(async () => {
     const response = await axios.get(
-      `http://localhost:4002/api/posts/?limit=6&page=${currIdx}`
+      `http://localhost:4002/api/posts/mock/?limit=6&page=${currIdx}`
     );
     setItems(response.data.docs);
     setCurrIdx(currIdx + 1);
-    console.log(response.data.docs);
   }, []);
 
   return (
     <Container>
-      <Grid
-        container
-        direction="row"
-        justify="flex-start"
-        alignItems="flex-start"
-        // spacing={2}
-      >
-        <Grid item xs={4}>
-          {renderMiddle}
-        </Grid>
-        <Grid item xs={4} style={{ marginLeft: "25px" }}>
-          {renderMiddle}
-        </Grid>
-      </Grid>
-      {/* <InfiniteScroll
+      <InfiniteScroll
         dataLength={items.length}
         next={fetchMoredata}
         hasMore={hasMore}
@@ -111,14 +63,27 @@ const Scroll2Fetch = () => {
           </p>
         }
       >
-        {items.map((item) => {
+        {/* {items.map((item, index) => {
           return (
             <div>
-              {item.testing} - {item._id}
+              {index + 1} - {item.title} - {item.tag}
             </div>
           );
-        })}
-      </InfiniteScroll> */}
+        })} */}
+        <Grid
+          container
+          direction="row"
+          justify="flex-start"
+          alignItems="flex-start"
+        >
+          <Grid item xs={4}>
+            <GridOfCard customData={items.slice(0, items.length / 2)} />
+          </Grid>
+          <Grid item xs={4} style={{ marginLeft: "25px" }}>
+            <GridOfCard customData={items.slice(-items.length / 2)} />
+          </Grid>
+        </Grid>
+      </InfiniteScroll>
     </Container>
   );
 };
