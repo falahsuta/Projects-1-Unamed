@@ -92,10 +92,10 @@ export default () => {
           </div>
         </Grid>
         <Grid item xs={4}>
-          <Sticky top={20} enableTransforms={false}>
+          <Sticky top={55} enableTransforms={false}>
             <div>
               <Paper
-                className="unblur-1 unblur-2"
+                // className="unblur-1 unblur-2"
                 style={{
                   width: "84%",
                   marginLeft: "33px",
@@ -107,18 +107,21 @@ export default () => {
           </Sticky>
         </Grid>
       </Grid>
-      {/* <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <br />
       <br />
       <Container>
         <Info useStyles={useD01InfoStyles} mb={1}>
           <InfoTitle>
             <Typography color="textPrimary">
-              {"Popular".toUpperCase()}
+              {"Our Picks Entry".toUpperCase()}
             </Typography>
           </InfoTitle>
         </Info>
-      </Container> */}
+      </Container>
     </React.Fragment>
   );
 };

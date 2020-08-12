@@ -135,4 +135,27 @@ router.get("/api/posts/favourite", async (req, res) => {
   });
 });
 
+router.get("/api/posts/mock", async (req, res) => {
+  const dataMiddle = [
+    {
+      title: "The Big Bang may be a black hole inside another universe",
+      imglink:
+        "https://images.unsplash.com/photo-1539321908154-04927596764d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80",
+      tag: "Space",
+    },
+    {
+      title: "The Dark Forest Theory of the Universe",
+      imglink: "https://miro.medium.com/max/1944/1*aLGt-w4m0dhJpAP6K4Abqg.jpeg",
+      tag: "Wild",
+    },
+    {
+      title: "Is the Universe Real? And Experiment Towards",
+      imglink: "https://miro.medium.com/max/1200/1*zHHvldZopy8y1YcKYez57Q.jpeg",
+      tag: "Philosophy",
+    },
+  ];
+
+  res.send({ docs: [...dataMiddle, ...dataMiddle] });
+});
+
 module.exports = router;
