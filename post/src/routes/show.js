@@ -171,7 +171,7 @@ router.get("/api/posts/mock", async (req, res) => {
     },
   ];
 
-  res.send({ docs: dataMiddle, totalDocs: 30 });
+  res.send({ docs: dataMiddle, totalDocs: 24 });
 });
 
 module.exports = router;

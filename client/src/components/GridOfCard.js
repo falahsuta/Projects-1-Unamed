@@ -2,7 +2,6 @@ import React from "react";
 
 import HorizontalCard from "./HorizontalCard";
 import Divider from "@material-ui/core/Divider";
-import Grid from "@material-ui/core/Grid";
 
 export default (props) => {
   const datalength = props.customData.length - 1;
@@ -18,7 +17,7 @@ export default (props) => {
           light
           style={{
             margin: "13px 0",
-            height: index === 0 ? "0.6px" : "1px",
+            // height: index === 0 ? "0.6px" : "1px",
             width: "355px",
             display: index === datalength ? "none" : undefined,
           }}
