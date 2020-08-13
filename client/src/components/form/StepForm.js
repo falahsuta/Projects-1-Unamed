@@ -15,7 +15,7 @@ const labels = ["Thumbnail", "Content", "Confirmation"];
 const StepForm = () => {
   const [steps, setSteps] = useState(0);
   const [fields, setFields] = useState({
-    firstName: "",
+    title: "",
     lastName: "",
     email: "",
     gender: "",
@@ -48,16 +48,20 @@ const StepForm = () => {
     const formErrors = { ...filedError };
     const lengthValidate = value.length > 0 && value.length < 3;
     const contentValidate = value.length < 400;
+    const titleValidate = value.length < 36 || value.length > 70;
+
+    // console.log("form errors");
+    // console.log(formErrors);
 
     switch (input) {
-      case "firstName":
-        formErrors.firstName = lengthValidate
-          ? "Minimum 3 characaters required"
+      case "title":
+        formErrors.title = titleValidate
+          ? "Minimum 36 characters and Maximum of 60 characters"
           : "";
         break;
       case "lastName":
         formErrors.lastName = lengthValidate
-          ? "Minimum 3 characaters required"
+          ? "Minimum 3 characters required"
           : "";
         break;
       case "email":
@@ -76,7 +80,7 @@ const StepForm = () => {
           : "";
       case "content":
         formErrors.content = contentValidate
-          ? "Content at least contain 400 character long"
+          ? "Content at least contain 400 characters long"
           : "";
         break;
       default:
@@ -87,6 +91,9 @@ const StepForm = () => {
     Object.values(formErrors).forEach((error) =>
       error.length > 0 ? setIsError(true) : setIsError(false)
     );
+
+    console.log(formErrors);
+
     // set errors hook
     setFieldError({
       ...formErrors,
@@ -131,7 +138,7 @@ const StepForm = () => {
 
   // Handle components
   return (
-    <Fragment>
+    <div>
       {steps === labels.length ? (
         <Success />
       ) : (
@@ -150,7 +157,7 @@ const StepForm = () => {
           {handleSteps(steps)}
         </Fragment>
       )}
-    </Fragment>
+    </div>
   );
 };
 

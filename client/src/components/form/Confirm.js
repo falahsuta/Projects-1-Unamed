@@ -9,13 +9,13 @@ import Button from "@material-ui/core/Button";
 const Confirm = ({
   handleNext,
   handleBack,
-  values: { firstName, lastName, email, gender, date, phone, city, content },
+  values: { title, lastName, email, gender, date, phone, city, content },
 }) => {
   return (
     <Fragment>
       <List disablePadding>
         <ListItem>
-          <ListItemText primary="First Name" secondary={firstName} />
+          <ListItemText primary="Title" secondary={title} />
         </ListItem>
 
         <Divider />

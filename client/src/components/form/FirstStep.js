@@ -11,14 +11,16 @@ import Button from "@material-ui/core/Button";
 const FirstStep = ({
   handleNext,
   handleChange,
-  values: { firstName, lastName, email, gender },
+  values: { title, lastName, email, gender },
   filedError,
   isError,
 }) => {
   // Check if all values are not empty
   const isEmpty =
-    firstName.length > 0 &&
-    lastName.length > 0 &&
+    title.length > 0 &&
+    title.length > 35 &&
+    title.length < 71 &&
+    lastName.length >= 3 &&
     gender.length > 0 &&
     email.length > 0;
 
@@ -28,17 +30,14 @@ const FirstStep = ({
         <Grid item xs={12} sm={12}>
           <TextField
             fullWidth
-            label="First Name"
-            name="firstName"
-            placeholder="Your first name"
-            defaultValue={firstName}
-            onChange={handleChange("firstName")}
+            label="Title"
+            name="title"
+            placeholder="Your Title"
+            defaultValue={title}
+            onChange={handleChange("title")}
             margin="normal"
-            // autoComplete="off"
-            error={filedError.firstName !== ""}
-            helperText={
-              filedError.firstName !== "" ? `${filedError.firstName}` : ""
-            }
+            error={filedError.title !== ""}
+            helperText={filedError.title !== "" ? `${filedError.title}` : ""}
             required
           />
         </Grid>
@@ -78,8 +77,14 @@ const FirstStep = ({
           <FormControl fullWidth required margin="normal">
             <InputLabel htmlFor="gender">Gender</InputLabel>
             <Select value={gender} onChange={handleChange("gender")}>
-              <MenuItem value={"Male"}>Male</MenuItem>
-              <MenuItem value={"Female"}>Female</MenuItem>
+              <MenuItem value={"Male"}>Quirk</MenuItem>
+              <MenuItem value={"Cool"}>Cool</MenuItem>
+              <MenuItem value={"Informative"}>Informative</MenuItem>
+              <MenuItem value={"Tech"}>Tech</MenuItem>
+              <MenuItem value={"Rnb"}>Rnb</MenuItem>
+              <MenuItem value={"Soul"}>Soul</MenuItem>
+              <MenuItem value={"Pop"}>Pop</MenuItem>
+              <MenuItem value={"Study-tips"}>Study-Tips</MenuItem>
             </Select>
           </FormControl>
         </Grid>
