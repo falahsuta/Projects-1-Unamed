@@ -4,58 +4,59 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
+import { Container, Typography } from "@material-ui/core";
 
 // Destructure props
 const Confirm = ({
   handleNext,
   handleBack,
-  values: { title, lastName, email, gender, date, phone, city, content },
+  values: { title, description, image, tag, content },
 }) => {
+  function cap(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   return (
     <Fragment>
       <List disablePadding>
         <ListItem>
-          <ListItemText primary="Title" secondary={title} />
+          <ListItemText primary="Title" secondary={cap(title)} />
         </ListItem>
 
         <Divider />
 
         <ListItem>
-          <ListItemText primary="Last Name" secondary={lastName} />
+          <ListItemText primary="Description" secondary={cap(description)} />
         </ListItem>
 
         <Divider />
 
         <ListItem>
-          <ListItemText primary="Email Address" secondary={email} />
+          <ListItemText primary="Image Link" secondary={cap(image)} />
         </ListItem>
 
         <Divider />
 
         <ListItem>
-          <ListItemText primary="Gender" secondary={gender} />
+          <ListItemText primary="Tag" secondary={cap(tag)} />
         </ListItem>
 
         <Divider />
 
         <ListItem>
-          <ListItemText primary="Date of birth" secondary={date} />
+          <ListItemText primary="Content" />
         </ListItem>
-
-        <Divider />
-
-        <ListItem>
-          <ListItemText primary="City" secondary={city} />
-        </ListItem>
-
-        <Divider />
-
-        <ListItem>
-          <ListItemText
-            primary="phone"
-            secondary={phone.length > 0 ? phone : "Not Provided"}
-          />
-        </ListItem>
+        <Typography variant="body2">
+          <div
+            style={{
+              width: "95%",
+              marginLeft: "18px",
+              wordWrap: "break-word",
+              color: "rgba(255, 255, 255, 0.7)",
+            }}
+          >
+            {cap(content)}
+          </div>
+        </Typography>
       </List>
 
       <div

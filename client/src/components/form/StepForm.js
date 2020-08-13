@@ -7,7 +7,7 @@ import SecondStep from "./SecondStep";
 import Confirm from "./Confirm";
 import Success from "./Success";
 
-const emailRegex = RegExp(/^[^@]+@[^@]+\.[^@]+$/);
+// const emailRegex = RegExp(/^[^@]+@[^@]+\.[^@]+$/);
 const phoneRegex = RegExp(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4,6})$/);
 // Step titles
 const labels = ["Thumbnail", "Content", "Confirmation"];
@@ -16,9 +16,9 @@ const StepForm = () => {
   const [steps, setSteps] = useState(0);
   const [fields, setFields] = useState({
     title: "",
-    lastName: "",
-    email: "",
-    gender: "",
+    description: "",
+    image: "",
+    tag: "",
     date: "",
     city: "",
     phone: "",
@@ -49,6 +49,8 @@ const StepForm = () => {
     const lengthValidate = value.length > 0 && value.length < 3;
     const contentValidate = value.length < 400;
     const titleValidate = value.length < 36 || value.length > 70;
+    const descValidate = value.length < 24 || value.length > 36;
+    const imageLinkValidate = value.length >= 12;
 
     // console.log("form errors");
     // console.log(formErrors);
@@ -59,15 +61,16 @@ const StepForm = () => {
           ? "Minimum 36 characters and Maximum of 60 characters"
           : "";
         break;
-      case "lastName":
-        formErrors.lastName = lengthValidate
-          ? "Minimum 3 characters required"
+      case "description":
+        formErrors.description = descValidate
+          ? "Minimum 24 characters and Maximum of 36 characters"
           : "";
         break;
-      case "email":
-        formErrors.email = emailRegex.test(value)
+      case "image":
+        // formErrors.email = emailRegex.test(value)
+        formErrors.image = imageLinkValidate
           ? ""
-          : "Invalid email address";
+          : "Invalid Link Detected, Link has to required minimum of 12 characters";
         break;
       case "phone":
         formErrors.phone = phoneRegex.test(value)
@@ -91,8 +94,6 @@ const StepForm = () => {
     Object.values(formErrors).forEach((error) =>
       error.length > 0 ? setIsError(true) : setIsError(false)
     );
-
-    console.log(formErrors);
 
     // set errors hook
     setFieldError({

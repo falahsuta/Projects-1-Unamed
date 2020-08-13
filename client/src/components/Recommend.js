@@ -20,7 +20,7 @@ import { useDynamicAvatarStyles } from "@mui-treasury/styles/avatar/dynamic";
 import HorizontalCard from "./HorizontalCard";
 import TagCard from "./TagCard";
 import TagCategory from "./TagCategory";
-import "./smooth.css";
+// import "./smooth.css";
 
 export default () => {
   const dataMiddle = [

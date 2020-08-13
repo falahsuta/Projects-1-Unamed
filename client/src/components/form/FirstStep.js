@@ -11,18 +11,21 @@ import Button from "@material-ui/core/Button";
 const FirstStep = ({
   handleNext,
   handleChange,
-  values: { title, lastName, email, gender },
+  values: { title, description, image, tag },
   filedError,
   isError,
 }) => {
   // Check if all values are not empty
   const isEmpty =
     title.length > 0 &&
-    title.length > 35 &&
-    title.length < 71 &&
-    lastName.length >= 3 &&
-    gender.length > 0 &&
-    email.length > 0;
+    // title.length > 35 &&
+    // title.length < 71 &&
+    // description.length >= 24 &&
+    // description.length <= 36 &&
+    tag.length > 0 &&
+    // image.length > 0 &&
+    image.length > 0;
+  // image.length >= 12;
 
   return (
     <Fragment>
@@ -40,19 +43,32 @@ const FirstStep = ({
             helperText={filedError.title !== "" ? `${filedError.title}` : ""}
             required
           />
+
+          {/* <TextField
+              fullWidth
+              label="Title"
+              name="title"
+              placeholder="Your Title"
+              defaultValue={title}
+              onChange={handleChange("title")}
+              margin="normal"
+              error={filedError.title !== ""}
+              helperText={filedError.title !== "" ? `${filedError.title}` : ""}
+              required
+            /> */}
         </Grid>
         <Grid item xs={12} sm={12}>
           <TextField
             fullWidth
-            label="Last Name"
-            name="lastName"
-            placeholder="Your last name"
-            defaultValue={lastName}
-            onChange={handleChange("lastName")}
+            label="Description"
+            name="description"
+            placeholder="Your Description"
+            defaultValue={description}
+            onChange={handleChange("description")}
             margin="normal"
-            error={filedError.lastName !== ""}
+            error={filedError.description !== ""}
             helperText={
-              filedError.lastName !== "" ? `${filedError.lastName}` : ""
+              filedError.description !== "" ? `${filedError.description}` : ""
             }
             required
           />
@@ -61,23 +77,23 @@ const FirstStep = ({
         <Grid item xs={12} sm={12}>
           <TextField
             fullWidth
-            label="Email"
-            name="email"
-            placeholder="Your email address"
-            type="email"
-            defaultValue={email}
-            onChange={handleChange("email")}
+            label="Image"
+            name="image"
+            placeholder="Your Image Link"
+            // type="image"
+            defaultValue={image}
+            onChange={handleChange("image")}
             margin="normal"
-            error={filedError.email !== ""}
-            helperText={filedError.email !== "" ? `${filedError.email}` : ""}
+            error={filedError.image !== ""}
+            helperText={filedError.image !== "" ? `${filedError.image}` : ""}
             required
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth required margin="normal">
-            <InputLabel htmlFor="gender">Gender</InputLabel>
-            <Select value={gender} onChange={handleChange("gender")}>
-              <MenuItem value={"Male"}>Quirk</MenuItem>
+            <InputLabel htmlFor="tag">Tag</InputLabel>
+            <Select value={tag} onChange={handleChange("tag")}>
+              <MenuItem value={"Quirk"}>Quirk</MenuItem>
               <MenuItem value={"Cool"}>Cool</MenuItem>
               <MenuItem value={"Informative"}>Informative</MenuItem>
               <MenuItem value={"Tech"}>Tech</MenuItem>

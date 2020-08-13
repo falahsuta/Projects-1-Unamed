@@ -51,13 +51,13 @@ const Scroll2Fetch = () => {
         next={fetchMoredata}
         hasMore={hasMore}
         loader={<h4>Loading...</h4>}
-        loader={<GridOfSkeleton />}
+        // loader={<GridOfSkeleton />}
         endMessage={
           <p>
             <b>Yay! You have seen it all</b>
           </p>
         }
-        scrollThreshold={0.9}
+        scrollThreshold={0.8}
       >
         <Picks items={items} />
 

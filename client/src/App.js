@@ -6,6 +6,8 @@ import AppBar from "./components/AppBar";
 
 import Landing from "./components/pages/Landing";
 import Form from "./components/form/Form";
+import New from "./components/form/new";
+import Modal from "./components/Modal";
 
 export default () => {
   return (
@@ -13,8 +15,10 @@ export default () => {
       <Container>
         <DarkMode>
           <AppBar />
-          <Form />
-          {/* <Landing /> */}
+          {/* <Form /> */}
+          {/* <New /> */}
+          <Landing />
+          {/* <Modal /> */}
         </DarkMode>
       </Container>
     </React.Fragment>
