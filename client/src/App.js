@@ -4,13 +4,8 @@ import "./styles.css";
 import { Container } from "@material-ui/core";
 import AppBar from "./components/AppBar";
 
-import Recommend from "./components/Recommend";
-import Header from "./components/Header";
-import headerData from "./components/header-data";
-import Box from "@material-ui/core/Box";
-// import Posts from "./";
-
 import Landing from "./components/pages/Landing";
+import Form from "./components/form/Form";
 
 export default () => {
   return (
@@ -18,7 +13,8 @@ export default () => {
       <Container>
         <DarkMode>
           <AppBar />
-          <Landing />
+          <Form />
+          {/* <Landing /> */}
         </DarkMode>
       </Container>
     </React.Fragment>

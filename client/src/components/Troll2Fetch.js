@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-
 import axios from "axios";
 import { Container } from "@material-ui/core";
 
 import SkeletonCard from "./SkeletonCard";
 import GridOfSkeleton from "./GridOfSkeleton";
-
 import Picks from "./Picks";
 
 const style = {
@@ -52,19 +50,19 @@ const Scroll2Fetch = () => {
         dataLength={items.length}
         next={fetchMoredata}
         hasMore={hasMore}
-        // loader={<h4>Loading...</h4>}
+        loader={<h4>Loading...</h4>}
         loader={<GridOfSkeleton />}
         endMessage={
           <p>
             <b>Yay! You have seen it all</b>
           </p>
         }
+        scrollThreshold={0.9}
       >
         <Picks items={items} />
+
         <br />
       </InfiniteScroll>
-      {/* <SkeletonCard /> */}
-      {/* <GridOfSkeleton /> */}
     </Container>
   );
 };
