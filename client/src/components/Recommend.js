@@ -49,6 +49,7 @@ export default () => {
           title={element.title}
           imglink={element.imglink}
           tag={element.tag}
+          reference={element.reference}
         />
         <Divider
           style={{

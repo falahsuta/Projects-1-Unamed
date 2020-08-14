@@ -11,6 +11,9 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import GoogleFontLoader from "react-google-font-loader";
 import Custom from "./form/Custom";
+import Form from "./form/Form";
+import { useDispatch } from "react-redux";
+import { fetchPost, closePost } from "../actions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,17 +65,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default (props) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const theme = useTheme();
 
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
+    dispatch(fetchPost());
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
+    // animation timeout so that the card dont render blank
+    // setTimeout(() => {
+    //   dispatch(closePost());
+    // }, 300);
   };
 
   return (
@@ -86,9 +95,6 @@ export default (props) => {
         style={{ cursor: "pointer" }}
         onClick={handleOpen}
       >
-        {/* <button type="button" onClick={handleOpen}>
-          react-transition-group
-        </button> */}
         <CardMedia
           className={classes.cover}
           image={props.imglink}
@@ -122,11 +128,8 @@ export default (props) => {
         }}
       >
         <Fade in={open}>
-          {/* <h2 id="transition-modal-title">Transition modal</h2>
-          <p id="transition-modal-description">
-            react-transition-group animates me.
-          </p> */}
           <Custom />
+          {/* <Form /> */}
         </Fade>
       </Modal>
     </>

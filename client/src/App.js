@@ -6,7 +6,7 @@ import AppBar from "./components/AppBar";
 
 import Landing from "./components/pages/Landing";
 import Form from "./components/form/Form";
-import New from "./components/form/new";
+
 import Modal from "./components/Modal";
 
 export default () => {
@@ -17,7 +17,7 @@ export default () => {
           <AppBar />
           {/* <Form /> */}
           {/* <New /> */}
-          <Landing />
+          {/* <Landing /> */}
           {/* <Modal /> */}
         </DarkMode>
       </Container>
