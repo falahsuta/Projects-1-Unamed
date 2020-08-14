@@ -8,9 +8,11 @@ import axios from "axios";
 // };
 
 export const fetchPost = () => async (dispatch) => {
-  const response = await axios.get("http://localhost:4002/api/posts/sample");
-  console.log(response.data.docs);
-  dispatch({ type: "FETCH_POST", payload: response.data.docs });
+  const response = await axios.get(
+    "http://localhost:4002/api/posts/?p=5f2c5c4150f0f409643c90f8"
+  );
+  console.log(response.data);
+  dispatch({ type: "FETCH_POST", payload: response.data });
 };
 
 export const closePost = () => {

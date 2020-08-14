@@ -8,6 +8,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
+import Comment from "../Comment";
+import Divider from "@material-ui/core/Divider";
 
 import { useSelector } from "react-redux";
 
@@ -21,6 +23,7 @@ export default (props) => {
   const classes = useStyles();
   // const [post, setPost] = useState({});
   const post = useSelector((state) => state.post);
+  console.log(post);
 
   // useEffect(async () => {
   //   const response = await axios.get("http://localhost:4002/api/posts/sample");
@@ -30,16 +33,26 @@ export default (props) => {
 
   return (
     <Card className={classes.root}>
+      <br />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
-          {/* {post.title} */}
-          {post ? post.title : ""}
-          {/* jancok */}
+          {post ? post.post.title : ""}
+        </Typography>
+        <Typography variant="body1" color="textPrimary" component="p">
+          {post ? post.post.description : ""}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          {post ? post.content : ""}
+          {post ? post.post.content : ""}
         </Typography>
+        <br />
+        <Divider />
+        <br />
+        <Typography gutterBottom variant="h5" component="h2">
+          Comments
+        </Typography>
+        {post && <Comment comment={post.comments} />}
       </CardContent>
+      <br />
     </Card>
   );
 };
