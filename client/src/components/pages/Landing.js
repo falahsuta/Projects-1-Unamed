@@ -7,7 +7,7 @@ import Header from "../Header";
 import headerData from "../header-data";
 import Modal from "../Modal";
 import Fab from "../Fab";
-
+// import Comment from "../Comment";
 // import Scroll2Fetch from "../Scoll2Fetch";
 import Troll2Fetch from "../Troll2Fetch";
 
