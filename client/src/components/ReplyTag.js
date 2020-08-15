@@ -14,8 +14,10 @@ export default (props) => {
           borderRadius: "17px",
           width: props.widthSpec ? `${props.widthSpec}px` : "80px",
           textTransform: "none",
-          marginTop: "8px",
+          // marginTop: "-2px",
+          marginBottom: "10px",
           marginRight: "5px",
+          height: props.heightSpec ? `${props.heightSpec}px` : undefined,
         }}
       >
         <div

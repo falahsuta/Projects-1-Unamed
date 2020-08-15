@@ -15,9 +15,9 @@ export default () => {
       <Container>
         <DarkMode>
           <AppBar />
-          <Comment />
+          {/* <Comment /> */}
 
-          {/* <Landing /> */}
+          <Landing />
           {/* <Modal /> */}
         </DarkMode>
       </Container>

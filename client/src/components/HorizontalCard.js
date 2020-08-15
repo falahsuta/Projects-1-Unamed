@@ -126,6 +126,8 @@ export default (props) => {
         BackdropProps={{
           timeout: 500,
         }}
+        // disableScrollLock
+        // scroll="body"
       >
         <Fade in={open}>
           <Custom />
