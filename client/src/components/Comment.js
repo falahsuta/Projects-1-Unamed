@@ -81,7 +81,7 @@ export default (props) => {
       })} */}
       <br />
       <br />
-      <br />
+      {/* <br /> */}
       {commentData.map((comment) => {
         return <Comment key={comment.id} comment={comment} />;
       })}

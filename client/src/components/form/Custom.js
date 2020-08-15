@@ -10,12 +10,13 @@ import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 import Comment from "../Comment";
 import Divider from "@material-ui/core/Divider";
+import { Container } from "@material-ui/core";
 
 import { useSelector } from "react-redux";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 745,
+    maxWidth: 625,
   },
 });
 
@@ -35,21 +36,36 @@ export default (props) => {
     <Card className={classes.root}>
       <br />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          {post ? post.post.title : ""}
-        </Typography>
-        <Typography variant="body1" color="textPrimary" component="p">
-          {post ? post.post.description : ""}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {post ? post.post.content : ""}
-        </Typography>
-        <br />
-        <Divider />
-        <br />
-        <Typography gutterBottom variant="h5" component="h2">
-          Comments
-        </Typography>
+        <Container>
+          <Typography gutterBottom variant="h5" component="h2">
+            {post ? post.post.title : ""}
+          </Typography>
+          <Typography
+            variant="body1"
+            color="textPrimary"
+            component="p"
+            align="justify"
+          >
+            {post ? post.post.description : ""}
+          </Typography>
+          <div style={{ height: "5px" }}></div>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            align="justify"
+          >
+            {post ? post.post.content : ""}
+          </Typography>
+          <br />
+          <Divider />
+          <br />
+        </Container>
+        <Container>
+          <Typography gutterBottom variant="h6" component="h3">
+            Comments
+          </Typography>
+        </Container>
         {post && <Comment comment={post.comments} />}
       </CardContent>
       <br />

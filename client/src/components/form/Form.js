@@ -33,8 +33,8 @@ const styles = (theme) => ({
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginTop: theme.spacing(8),
-      marginBottom: theme.spacing(8),
+      // marginTop: theme.spacing(8),
+      // marginBottom: theme.spacing(8),
       padding: theme.spacing(3),
     },
   },
@@ -45,7 +45,7 @@ const App = ({ classes }) => {
     <div className="App">
       <CssBaseline />
       <main className={classes.layout}>
-        <Paper className={classes.paper}>
+        <Paper className={classes.paper} elevation={0}>
           <StepForm />
         </Paper>
       </main>

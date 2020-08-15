@@ -18,14 +18,14 @@ const FirstStep = ({
   // Check if all values are not empty
   const isEmpty =
     title.length > 0 &&
-    // title.length > 35 &&
-    // title.length < 71 &&
-    // description.length >= 24 &&
-    // description.length <= 36 &&
+    title.length > 35 &&
+    title.length < 71 &&
+    description.length >= 24 &&
+    description.length <= 36 &&
     tag.length > 0 &&
-    // image.length > 0 &&
-    image.length > 0;
-  // image.length >= 12;
+    image.length > 0 &&
+    // image.length > 0;
+    image.length >= 12;
 
   return (
     <Fragment>

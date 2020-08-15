@@ -13,6 +13,8 @@ import GoogleFontLoader from "react-google-font-loader";
 import Custom from "./form/Custom";
 import Form from "./form/Form";
 import { useDispatch } from "react-redux";
+import Dialog from "@material-ui/core/Dialog";
+
 import { fetchPost, closePost } from "../actions";
 
 const useStyles = makeStyles((theme) => ({
@@ -115,25 +117,18 @@ export default (props) => {
           </div>
         </CardActionArea>
       </Card>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
+
+      <Dialog
+        maxWidth
         onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-        // disableScrollLock
-        // scroll="body"
+        aria-labelledby="simple-dialog-title"
+        open={open}
+        scroll="body"
       >
         <Fade in={open}>
           <Custom />
-          {/* <Form /> */}
         </Fade>
-      </Modal>
+      </Dialog>
     </>
   );
 };

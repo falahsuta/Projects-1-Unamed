@@ -5,6 +5,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import Form from "./form/Form";
 import Fab from "./Fab";
+import Dialog from "@material-ui/core/Dialog";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -39,22 +40,17 @@ export default function TransitionsModal() {
       <div onClick={handleOpen} style={{ display: open ? "none" : "" }}>
         <Fab />
       </div>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
+      <Dialog
+        maxWidth
         onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
+        aria-labelledby="simple-dialog-title"
+        open={open}
+        scroll="body"
       >
         <Fade in={open}>
           <Form />
         </Fade>
-      </Modal>
+      </Dialog>
     </>
   );
 }

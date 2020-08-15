@@ -29,7 +29,7 @@ export default function FloatingActionButtonSize() {
           variant="extended"
           aria-label="add"
           className={classes.margin}
-          // color="primary"
+          color="primary"
         >
           <AddIcon className={classes.extendedIcon} />
           Post
