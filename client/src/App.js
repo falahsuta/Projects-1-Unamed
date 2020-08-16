@@ -8,6 +8,7 @@ import Landing from "./components/pages/Landing";
 
 import Modal from "./components/Modal";
 import Comment from "./components/Comment";
+import SignInForm from "./components/form/signin/SignInForm";
 
 export default () => {
   return (
@@ -16,8 +17,8 @@ export default () => {
         <DarkMode>
           <AppBar />
           {/* <Comment /> */}
-
-          <Landing />
+          <SignInForm />
+          {/* <Landing /> */}
           {/* <Modal /> */}
         </DarkMode>
       </Container>

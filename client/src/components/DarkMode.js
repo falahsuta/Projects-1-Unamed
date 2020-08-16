@@ -18,8 +18,8 @@ import { Container } from "@material-ui/core";
 export default (props) => {
   const [darkState, setDarkState] = useState(true);
   const palletType = darkState ? "dark" : "light";
-  const mainPrimaryColor = darkState ? blueGrey[500] : lightBlue[500];
-  const mainSecondaryColor = darkState ? blueGrey[500] : deepPurple[500];
+  const mainPrimaryColor = darkState ? blueGrey[300] : lightBlue[500];
+  const mainSecondaryColor = darkState ? blueGrey[300] : deepPurple[500];
   const darkTheme = createMuiTheme({
     palette: {
       type: palletType,

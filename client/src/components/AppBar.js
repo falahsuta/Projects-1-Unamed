@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -10,6 +10,9 @@ import Slide from "@material-ui/core/Slide";
 import Navbar from "./Navbar";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
+import { useDispatch } from "react-redux";
+import { getCurrentUser } from "../actions";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((props) => ({
   root: {
@@ -34,7 +37,11 @@ HideOnScroll.propTypes = {
 };
 
 export default (props) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
+
+  dispatch(getCurrentUser());
+
   return (
     <React.Fragment>
       <CssBaseline />

@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { Container } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
+import { useSelector } from "react-redux";
+import Dialog from "@material-ui/core/Dialog";
+import Fade from "@material-ui/core/Fade";
+import Form from "./form/Form";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,29 +17,57 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ({ currentUser }) => {
+export default () => {
   const classes = useStyles();
+  const user = useSelector((state) => state.user);
+  const [open, setOpen] = useState(false);
 
-  const links = [
-    !currentUser && { label: "SignUp", href: "/auth/signup" },
-    !currentUser && { label: "Login", href: "/auth/signin" },
-    currentUser && { label: "Account", href: "/auth//account" },
-    currentUser && { label: "Logout", href: "/auth/signout" },
-  ]
-    .filter((linkConfig) => linkConfig)
-    .map(({ label, href }, index) => {
-      return (
-        <Button
-          style={{
-            right: index % 2 === 1 ? "10px" : "14px",
-            position: "relative",
-          }}
-          disableRipple={true}
-        >
-          {label}
-        </Button>
-      );
-    });
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const links = (currentUser) => {
+    return [
+      !currentUser && { label: "SignUp", href: "/auth/signup" },
+      !currentUser && { label: "Login", href: "/auth/signin" },
+      currentUser && { label: "Account", href: "/auth//account" },
+      currentUser && { label: "Logout", href: "/auth/signout" },
+    ]
+      .filter((linkConfig) => linkConfig)
+      .map(({ label, href }, index) => {
+        return (
+          <>
+            <Button
+              style={{
+                right: index % 2 === 1 ? "10px" : "14px",
+                position: "relative",
+              }}
+              onClick={handleOpen}
+              disableRipple={true}
+            >
+              {label}
+            </Button>
+            <Dialog
+              maxWidth
+              onClose={handleClose}
+              aria-labelledby="simple-dialog-title"
+              open={open}
+              scroll="body"
+            >
+              <Fade in={open}>
+                <Form />
+              </Fade>
+            </Dialog>
+          </>
+        );
+      });
+  };
+
+  // useEffect(() => {}, [user]);
 
   return (
     <div className={classes.root}>
@@ -58,7 +90,7 @@ export default ({ currentUser }) => {
           <Button disableRipple={true}>DissCuss</Button>
         </Grid>
         <Grid item xs align="end">
-          {links}
+          {user && links(user.currentUser)}
         </Grid>
       </Grid>
     </div>

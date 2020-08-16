@@ -11,6 +11,16 @@ const postReducer = (post = null, action) => {
   }
 };
 
+const userReducer = (user = null, action) => {
+  switch (action.type) {
+    case "FETCH_CURRENTUSER":
+      return action.payload;
+    default:
+      return user;
+  }
+};
+
 export default combineReducers({
   post: postReducer,
+  user: userReducer,
 });

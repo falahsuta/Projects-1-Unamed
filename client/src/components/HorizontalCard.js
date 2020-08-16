@@ -80,10 +80,6 @@ export default (props) => {
 
   const handleClose = () => {
     setOpen(false);
-    // animation timeout so that the card dont render blank
-    // setTimeout(() => {
-    //   dispatch(closePost());
-    // }, 300);
   };
 
   return (

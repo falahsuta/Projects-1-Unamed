@@ -22,15 +22,7 @@ const useStyles = makeStyles({
 
 export default (props) => {
   const classes = useStyles();
-  // const [post, setPost] = useState({});
   const post = useSelector((state) => state.post);
-  console.log(post);
-
-  // useEffect(async () => {
-  //   const response = await axios.get("http://localhost:4002/api/posts/sample");
-  //   setPost(response.data.docs);
-  //   console.log(response.data);
-  // }, []);
 
   return (
     <Card className={classes.root}>

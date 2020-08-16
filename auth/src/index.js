@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
+const cors = require("cors");
 
 const connect = require("./connections/mongo");
 const CurrentUserRouter = require("./routes/current-user");
@@ -12,6 +13,7 @@ const ErrorHandler = require("../../common/middlewares/error-handler");
 
 connect();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.set("trust proxy", true);
 app.use(
