@@ -13,12 +13,9 @@ import Typography from "@material-ui/core/Typography";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useDispatch } from "react-redux";
-import { login, getCurrentUser } from "../../../actions";
+import { login } from "../../../actions";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-
-// axios.defaults.withCredentials = true;
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -58,11 +55,9 @@ const FirstStep = ({
   isError,
 }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
-
   const [err, setErr] = useState([]);
   const [showButton, setShowButton] = useState(false);
-  const [success, setSuccess] = useState("SIGN IN");
+  const [success, setSuccess] = useState("SIGN UP");
 
   const classes = useStyles();
   const emailRegex = RegExp(/^[^@]+@[^@]+\.[^@]+$/);
@@ -72,7 +67,6 @@ const FirstStep = ({
   // const [err, setErr] =
 
   const sendToServer = async () => {
-    // history.push("/yes");
     const value = {
       username: email,
       password,
@@ -80,28 +74,13 @@ const FirstStep = ({
 
     try {
       const response = await axios.post(
-        "http://localhost:4001/api/users/signin",
-        value,
-        {
-          withCredentials: true,
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json",
-          },
-        }
+        "http://localhost:4001/api/users/signup",
+        value
       );
       // console.log("INI GAK ADA HARUSNYA!!");
       setSuccess("Success Authenticated");
-      console.log(response.data);
-      // history.push("/yes");
-      const eee = await axios.get(
-        "http://localhost:4001/api/users/currentUser",
-        { withCredentials: true }
-      );
-      setTimeout(async () => {
-        console.log(eee.data);
-      }, 1000);
     } catch (err) {
+      // console.log(err.response);
       setErr(err.response.data.errors);
     }
   };
@@ -135,7 +114,7 @@ const FirstStep = ({
         {/* <Grid item xs={12} sm={12} alignItems="center"> */}
         <div className={classes.typography}>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign Up
           </Typography>
         </div>
         {/* </Grid> */}

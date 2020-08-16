@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 import Dialog from "@material-ui/core/Dialog";
 import Fade from "@material-ui/core/Fade";
 import Form from "./form/Form";
+import SignInForm from "./form/signin/SignInForm";
+import SignUpForm from "./form/signup/SignUpForm";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,24 +23,36 @@ export default () => {
   const classes = useStyles();
   const user = useSelector((state) => state.user);
   const [open, setOpen] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
+  const handleOpen = (label) => {
+    label === "SignUp" ? setShowRegister(true) : setShowLogin(true);
+    // setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleClose = (label) => {
+    // setOpen(false);
+    label === "SignUp" ? setShowRegister(false) : setShowLogin(false);
   };
 
   const links = (currentUser) => {
     return [
-      !currentUser && { label: "SignUp", href: "/auth/signup" },
-      !currentUser && { label: "Login", href: "/auth/signin" },
+      !currentUser && {
+        label: "SignUp",
+        href: "/auth/signup",
+        form: <SignUpForm />,
+      },
+      !currentUser && {
+        label: "Login",
+        href: "/auth/signin",
+        form: <SignInForm />,
+      },
       currentUser && { label: "Account", href: "/auth//account" },
       currentUser && { label: "Logout", href: "/auth/signout" },
     ]
       .filter((linkConfig) => linkConfig)
-      .map(({ label, href }, index) => {
+      .map(({ label, href, form }, index) => {
         return (
           <>
             <Button
@@ -46,20 +60,20 @@ export default () => {
                 right: index % 2 === 1 ? "10px" : "14px",
                 position: "relative",
               }}
-              onClick={handleOpen}
+              onClick={() => handleOpen(label)}
               disableRipple={true}
             >
               {label}
             </Button>
             <Dialog
               maxWidth
-              onClose={handleClose}
+              onClose={() => handleClose(label)}
               aria-labelledby="simple-dialog-title"
-              open={open}
+              open={label === "SignUp" ? showRegister : showLogin}
               scroll="body"
             >
-              <Fade in={open}>
-                <Form />
+              <Fade in={label === "SignUp" ? showRegister : showLogin}>
+                {form}
               </Fade>
             </Dialog>
           </>

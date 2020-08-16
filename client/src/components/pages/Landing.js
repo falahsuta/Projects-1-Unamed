@@ -22,7 +22,8 @@ export default () => {
       {/* <Fab /> */}
       <Modal />
       <Recommend />
-      <Troll2Fetch />
+
+      {/* <Troll2Fetch /> */}
     </>
   );
 };

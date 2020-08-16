@@ -23,9 +23,10 @@ export const closePost = () => {
 
 export const getCurrentUser = () => async (dispatch) => {
   const response = await axios.get(
-    "http://localhost:4001/api/users/currentUser"
+    "http://localhost:4001/api/users/currentUser",
+    { credentials: true }
   );
-  // console.log(response.data);
+  console.log(response.data);
   dispatch({ type: "FETCH_CURRENTUSER", payload: response.data });
 };
 
