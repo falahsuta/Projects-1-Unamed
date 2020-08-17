@@ -26,13 +26,12 @@ export default function FloatingActionButtonSize() {
     <div className={classes.fabStyle}>
       <div>
         <Fab
-          variant="extended"
+          size="medium"
+          color="secondary"
           aria-label="add"
           className={classes.margin}
-          color="primary"
         >
-          <AddIcon className={classes.extendedIcon} />
-          Post
+          <AddIcon />
         </Fab>
       </div>
     </div>

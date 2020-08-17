@@ -9,8 +9,9 @@ export default (props) => {
     return (
       <>
         <HorizontalCard
+          id={element._id}
           title={element.title}
-          imglink={element.imglink}
+          imglink={element.image}
           tag={element.tag}
         />
         <Divider

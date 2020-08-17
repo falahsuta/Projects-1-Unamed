@@ -23,7 +23,7 @@ connect();
 //     "Access-Control-Allow-Methods",
 //     "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS"
 //   );
-//   res.header("Access-Control-Expose-Headers", true);
+//   // res.header("Access-Control-Expose-Headers", true);
 //   next();
 // });
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));

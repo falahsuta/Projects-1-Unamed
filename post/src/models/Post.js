@@ -10,6 +10,7 @@ const postSchema = new mongoose.Schema({
   content: String,
   date: Date,
   testing: Number,
+  image: String,
 });
 
 postSchema.pre("save", function (next) {

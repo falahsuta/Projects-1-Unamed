@@ -44,7 +44,7 @@ const styles = (theme) => ({
   },
 });
 
-const App = ({ classes }) => {
+const App = ({ classes, closeAll }) => {
   return (
     <div className="App">
       <CssBaseline />
@@ -53,7 +53,7 @@ const App = ({ classes }) => {
           <LockOutlinedIcon />
         </Avatar> */}
         <Paper className={classes.paper} elevation={0}>
-          <Validation />
+          <Validation closeAll={closeAll} />
         </Paper>
       </main>
     </div>

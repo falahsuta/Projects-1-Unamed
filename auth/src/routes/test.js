@@ -9,13 +9,13 @@
 // );
 
 // const payload = jwt.verify(token, "secret");
-const mongoose = require("mongoose");
-const User = require("../models/User");
+// const mongoose = require("mongoose");
+// const User = require("../models/User");
 
-const user = User({
-  username: "falah@falah.com",
-  password: "password",
-});
+// const user = User({
+//   username: "falah@falah.com",
+//   password: "password",
+// });
 
-user.save();
-console.log(user._id);
+// user.save();
+// console.log(user._id);

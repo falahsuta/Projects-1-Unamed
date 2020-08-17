@@ -24,42 +24,48 @@ export default (props) => {
   const classes = useStyles();
   const post = useSelector((state) => state.post);
 
+  console.log(post);
   return (
     <Card className={classes.root}>
       <br />
-      <CardContent>
-        <Container>
-          <Typography gutterBottom variant="h5" component="h2">
-            {post ? post.post.title : ""}
-          </Typography>
-          <Typography
-            variant="body1"
-            color="textPrimary"
-            component="p"
-            align="justify"
-          >
-            {post ? post.post.description : ""}
-          </Typography>
-          <div style={{ height: "5px" }}></div>
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            component="p"
-            align="justify"
-          >
-            {post ? post.post.content : ""}
-          </Typography>
-          <br />
-          <Divider />
-          <br />
-        </Container>
-        <Container>
-          <Typography gutterBottom variant="h6" component="h3">
-            Comments
-          </Typography>
-        </Container>
-        {post && <Comment comment={post.comments} />}
-      </CardContent>
+      {post ? (
+        <CardContent>
+          <Container>
+            <Typography gutterBottom variant="h5" component="h2">
+              {post ? post.post.title : ""}
+            </Typography>
+            <Typography
+              variant="body1"
+              color="textPrimary"
+              component="p"
+              align="justify"
+            >
+              {post ? post.post.description : ""}
+            </Typography>
+            <div style={{ height: "5px" }}></div>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              align="justify"
+            >
+              {post ? post.post.content : ""}
+            </Typography>
+            <br />
+            <Divider />
+            <br />
+          </Container>
+          {post && post.comment && (
+            <Container>
+              <Typography gutterBottom variant="h6" component="h3">
+                Comments
+              </Typography>
+            </Container>
+          )}
+          {post && <Comment comment={post.comments} />}
+        </CardContent>
+      ) : undefined}
+
       <br />
     </Card>
   );

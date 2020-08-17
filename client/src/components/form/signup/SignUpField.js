@@ -13,9 +13,12 @@ import Typography from "@material-ui/core/Typography";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useDispatch } from "react-redux";
-import { login } from "../../../actions";
+import { signIn, getCurrentUser, setCredentials } from "../../../actions";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+
+// axios.defaults.withCredentials = true;
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -53,11 +56,14 @@ const FirstStep = ({
   values: { email, password },
   filedError,
   isError,
+  closeAll,
 }) => {
   const dispatch = useDispatch();
-  const [err, setErr] = useState([]);
+  const history = useHistory();
+  const user = useSelector((state) => state.user);
+  const [error, setError] = useState([]);
   const [showButton, setShowButton] = useState(false);
-  const [success, setSuccess] = useState("SIGN UP");
+  const [success, setSuccess] = useState("SIGN IN");
 
   const classes = useStyles();
   const emailRegex = RegExp(/^[^@]+@[^@]+\.[^@]+$/);
@@ -72,21 +78,24 @@ const FirstStep = ({
       password,
     };
 
-    try {
-      const response = await axios.post(
-        "http://localhost:4001/api/users/signup",
-        value
-      );
-      // console.log("INI GAK ADA HARUSNYA!!");
-      setSuccess("Success Authenticated");
-    } catch (err) {
-      // console.log(err.response);
-      setErr(err.response.data.errors);
-    }
+    dispatch(signIn(value))
+      .then((action) => {
+        setSuccess("Success Authenticated");
+        dispatch(action);
+        closeAll();
+      })
+      .catch((err) => {
+        setError(err.response.data.errors);
+      });
+    // const response = await axios.get(
+    //   "http://localhost:4001/api/users/currentUser",
+    //   { withCredentials: true }
+    // );
+    // console.log(response.data);
   };
 
   const showLoadingButton = () => {
-    setErr([]);
+    setError([]);
     setShowButton(true);
     setTimeout(() => {
       setShowButton(false);
@@ -114,7 +123,7 @@ const FirstStep = ({
         {/* <Grid item xs={12} sm={12} alignItems="center"> */}
         <div className={classes.typography}>
           <Typography component="h1" variant="h5">
-            Sign Up
+            Sign in
           </Typography>
         </div>
         {/* </Grid> */}
@@ -156,7 +165,7 @@ const FirstStep = ({
         <div
           style={{ display: "flex", marginTop: 20, justifyContent: "flex-end" }}
         >
-          {err.map((error) => {
+          {error.map((error) => {
             return (
               <Typography
                 // className={classes.messageError}

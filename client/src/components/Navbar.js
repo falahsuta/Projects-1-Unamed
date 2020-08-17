@@ -4,12 +4,14 @@ import Button from "@material-ui/core/Button";
 import { Container } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Dialog from "@material-ui/core/Dialog";
 import Fade from "@material-ui/core/Fade";
 import Form from "./form/Form";
 import SignInForm from "./form/signin/SignInForm";
 import SignUpForm from "./form/signup/SignUpForm";
+import { signOut } from "../actions";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,38 +23,50 @@ const useStyles = makeStyles((theme) => ({
 
 export default () => {
   const classes = useStyles();
+  const history = useHistory();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const [open, setOpen] = useState(false);
+
+  console.log(user);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
 
   const handleOpen = (label) => {
     label === "SignUp" ? setShowRegister(true) : setShowLogin(true);
-    // setOpen(true);
   };
 
   const handleClose = (label) => {
-    // setOpen(false);
     label === "SignUp" ? setShowRegister(false) : setShowLogin(false);
+  };
+
+  const handleActionLog = (label) => {
+    if (label === "Logout") {
+      dispatch(signOut());
+    } else {
+      history.push("/yes");
+    }
+  };
+
+  const closeAll = () => {
+    setShowRegister(false);
+    setShowLogin(false);
   };
 
   const links = (currentUser) => {
     return [
       !currentUser && {
         label: "SignUp",
-        href: "/auth/signup",
-        form: <SignUpForm />,
+        form: <SignUpForm closeAll={closeAll} />,
       },
       !currentUser && {
         label: "Login",
-        href: "/auth/signin",
-        form: <SignInForm />,
+        form: <SignInForm closeAll={closeAll} />,
       },
-      currentUser && { label: "Account", href: "/auth//account" },
-      currentUser && { label: "Logout", href: "/auth/signout" },
+      currentUser && { label: "Account" },
+      currentUser && { label: "Logout" },
     ]
       .filter((linkConfig) => linkConfig)
-      .map(({ label, href, form }, index) => {
+      .map(({ label, form }, index) => {
         return (
           <>
             <Button
@@ -60,28 +74,30 @@ export default () => {
                 right: index % 2 === 1 ? "10px" : "14px",
                 position: "relative",
               }}
-              onClick={() => handleOpen(label)}
+              onClick={() =>
+                !currentUser ? handleOpen(label) : handleActionLog(label)
+              }
               disableRipple={true}
             >
               {label}
             </Button>
-            <Dialog
-              maxWidth
-              onClose={() => handleClose(label)}
-              aria-labelledby="simple-dialog-title"
-              open={label === "SignUp" ? showRegister : showLogin}
-              scroll="body"
-            >
-              <Fade in={label === "SignUp" ? showRegister : showLogin}>
-                {form}
-              </Fade>
-            </Dialog>
+            {!currentUser && (
+              <Dialog
+                maxWidth
+                onClose={() => handleClose(label)}
+                aria-labelledby="simple-dialog-title"
+                open={label === "SignUp" ? showRegister : showLogin}
+                scroll="body"
+              >
+                <Fade in={label === "SignUp" ? showRegister : showLogin}>
+                  {form}
+                </Fade>
+              </Dialog>
+            )}
           </>
         );
       });
   };
-
-  // useEffect(() => {}, [user]);
 
   return (
     <div className={classes.root}>

@@ -9,7 +9,7 @@ const phoneRegex = RegExp(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4,6})$/);
 // Step titles
 const labels = ["Login"];
 
-const StepForm = () => {
+const StepForm = (props) => {
   const [steps, setSteps] = useState(0);
   const [fields, setFields] = useState({
     email: "",
@@ -76,6 +76,7 @@ const StepForm = () => {
             values={fields}
             isError={isError}
             filedError={filedError}
+            closeAll={props.closeAll}
           />
         );
       // case 1:

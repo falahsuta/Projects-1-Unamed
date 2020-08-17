@@ -12,16 +12,13 @@ const phoneRegex = RegExp(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4,6})$/);
 // Step titles
 const labels = ["Thumbnail", "Content", "Confirmation"];
 
-const StepForm = () => {
+const StepForm = (props) => {
   const [steps, setSteps] = useState(0);
   const [fields, setFields] = useState({
     title: "",
     description: "",
     image: "",
     tag: "",
-    date: "",
-    city: "",
-    phone: "",
     content: "",
   });
   // Copy fields as they all have the same name
@@ -47,7 +44,7 @@ const StepForm = () => {
     // Handle errors
     const formErrors = { ...filedError };
     const lengthValidate = value.length > 0 && value.length < 3;
-    const contentValidate = value.length < 400;
+    const contentValidate = value.length < 100;
     const titleValidate = value.length < 36 || value.length > 70;
     const descValidate = value.length < 24 || value.length > 36;
     const imageLinkValidate = value.length >= 12;
@@ -72,15 +69,6 @@ const StepForm = () => {
           ? ""
           : "Invalid Link Detected, Link has to required minimum of 12 characters";
         break;
-      case "phone":
-        formErrors.phone = phoneRegex.test(value)
-          ? ""
-          : "Please enter a valid phone number. i.e: xxx-xxx-xxxx";
-        break;
-      case "city":
-        formErrors.city = lengthValidate
-          ? "Minimum 3 characaters required"
-          : "";
       case "content":
         formErrors.content = contentValidate
           ? "Content at least contain 400 characters long"
@@ -141,7 +129,7 @@ const StepForm = () => {
   return (
     <div>
       {steps === labels.length ? (
-        <Success />
+        <Success closeAll={props.closeAll} />
       ) : (
         <Fragment>
           <Stepper

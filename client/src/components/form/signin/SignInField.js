@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useDispatch } from "react-redux";
-import { login, getCurrentUser } from "../../../actions";
+import { signIn, getCurrentUser, setCredentials } from "../../../actions";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -56,11 +56,12 @@ const FirstStep = ({
   values: { email, password },
   filedError,
   isError,
+  closeAll,
 }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-
-  const [err, setErr] = useState([]);
+  const user = useSelector((state) => state.user);
+  const [error, setError] = useState([]);
   const [showButton, setShowButton] = useState(false);
   const [success, setSuccess] = useState("SIGN IN");
 
@@ -72,42 +73,29 @@ const FirstStep = ({
   // const [err, setErr] =
 
   const sendToServer = async () => {
-    // history.push("/yes");
     const value = {
       username: email,
       password,
     };
 
-    try {
-      const response = await axios.post(
-        "http://localhost:4001/api/users/signin",
-        value,
-        {
-          withCredentials: true,
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      // console.log("INI GAK ADA HARUSNYA!!");
-      setSuccess("Success Authenticated");
-      console.log(response.data);
-      // history.push("/yes");
-      const eee = await axios.get(
-        "http://localhost:4001/api/users/currentUser",
-        { withCredentials: true }
-      );
-      setTimeout(async () => {
-        console.log(eee.data);
-      }, 1000);
-    } catch (err) {
-      setErr(err.response.data.errors);
-    }
+    dispatch(signIn(value))
+      .then((action) => {
+        setSuccess("Success Authenticated");
+        dispatch(action);
+        closeAll();
+      })
+      .catch((err) => {
+        setError(err.response.data.errors);
+      });
+    // const response = await axios.get(
+    //   "http://localhost:4001/api/users/currentUser",
+    //   { withCredentials: true }
+    // );
+    // console.log(response.data);
   };
 
   const showLoadingButton = () => {
-    setErr([]);
+    setError([]);
     setShowButton(true);
     setTimeout(() => {
       setShowButton(false);
@@ -149,6 +137,7 @@ const FirstStep = ({
             placeholder="Your email address"
             type="email"
             defaultValue={email}
+            color="primary"
             onChange={handleChange("email")}
             margin="normal"
             error={filedError.email !== ""}
@@ -177,11 +166,12 @@ const FirstStep = ({
         <div
           style={{ display: "flex", marginTop: 20, justifyContent: "flex-end" }}
         >
-          {err.map((error) => {
+          {error.map((error) => {
             return (
               <Typography
                 // className={classes.messageError}
                 component="h3"
+                color="error"
                 variant="body1"
               >
                 {error.message}
@@ -190,7 +180,7 @@ const FirstStep = ({
           })}
         </div>
       </Grid>
-      <br />
+      {/* <br /> */}
       <br />
       <br />
       <br />

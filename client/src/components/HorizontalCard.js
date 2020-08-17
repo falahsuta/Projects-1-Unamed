@@ -74,7 +74,7 @@ export default (props) => {
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
-    dispatch(fetchPost());
+    dispatch(fetchPost(props.id));
     setOpen(true);
   };
 

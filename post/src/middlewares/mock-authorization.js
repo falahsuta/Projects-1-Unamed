@@ -1,21 +1,21 @@
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 
-const mockAuthorization = (req, res, next) => {
-  if (req.currentUser) {
-    return next();
-  }
+// const mockAuthorization = (req, res, next) => {
+//   if (req.currentUser) {
+//     return next();
+//   }
 
-  const fake_payload = {
-    id: "pala",
-    username: "testing",
-  };
+//   const fake_payload = {
+//     id: "pala",
+//     username: "testing",
+//   };
 
-  req.session = {
-    jwt: jwt.sign(fake_payload, "key"),
-  };
-  req.currentUser = jwt.verify(req.session.jwt, "key");
+//   req.session = {
+//     jwt: jwt.sign(fake_payload, "key"),
+//   };
+//   req.currentUser = jwt.verify(req.session.jwt, "key");
 
-  next();
-};
+//   next();
+// };
 
-module.exports = mockAuthorization;
+// module.exports = mockAuthorization;

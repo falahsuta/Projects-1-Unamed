@@ -11,9 +11,16 @@ const postReducer = (post = null, action) => {
   }
 };
 
+// const userReducer = (user = { currentUser: null }, action) => {
 const userReducer = (user = null, action) => {
   switch (action.type) {
     case "FETCH_CURRENTUSER":
+      return action.payload;
+    case "SIGNIN_CURRENTUSER":
+      return action.payload;
+    case "SET_CURRENTUSER":
+      return action.payload;
+    case "SIGNOUT_CURRENTUSER":
       return action.payload;
     default:
       return user;

@@ -23,7 +23,7 @@ export default () => {
       <Modal />
       <Recommend />
 
-      {/* <Troll2Fetch /> */}
+      <Troll2Fetch />
     </>
   );
 };

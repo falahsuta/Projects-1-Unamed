@@ -68,7 +68,7 @@ router.get("/api/posts", async (req, res) => {
   if (req.query.page) {
     const posts = await Post.paginate(
       {},
-      { sort: "testing", page: req.query.page, limit: 3 }
+      { sort: "testing", page: req.query.page, limit: 6 }
     );
 
     return res.send(posts);

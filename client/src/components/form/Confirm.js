@@ -5,6 +5,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import { Container, Typography } from "@material-ui/core";
+import { useSelector } from "react-redux";
+import { createPost } from "../../actions";
+import { useDispatch } from "react-redux";
 
 // Destructure props
 const Confirm = ({
@@ -12,9 +15,30 @@ const Confirm = ({
   handleBack,
   values: { title, description, image, tag, content },
 }) => {
-  function cap(string) {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+
+  const cap = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  };
+
+  const handleSend = () => {
+    if (user.currentUser.id) {
+      const userId = user.currentUser.id;
+      const value = {
+        userId,
+        title,
+        description,
+        image,
+        tag: tag.toLowerCase(),
+        content,
+        userId,
+      };
+      console.log(value);
+      dispatch(createPost(value));
+    }
+  };
+
   return (
     <Fragment>
       <List disablePadding>
@@ -69,7 +93,10 @@ const Confirm = ({
           style={{ marginLeft: 20 }}
           variant="contained"
           color="secondary"
-          onClick={handleNext}
+          onClick={() => {
+            handleSend();
+            handleNext();
+          }}
         >
           Confirm & Continue
         </Button>

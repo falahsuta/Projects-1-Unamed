@@ -82,7 +82,10 @@ export default (props) => {
       <br />
       <br />
       {/* <br /> */}
-      {commentData.map((comment) => {
+      {/* {commentData.map((comment) => {
+        return <Comment key={comment.id} comment={comment} />;
+      })} */}
+      {props.comment.map((comment) => {
         return <Comment key={comment.id} comment={comment} />;
       })}
     </div>

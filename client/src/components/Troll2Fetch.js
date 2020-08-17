@@ -27,7 +27,8 @@ const Scroll2Fetch = () => {
     }
 
     const response = await axios.get(
-      `http://localhost:4002/api/posts/mock/?limit=6&page=${currIdx}`
+      // `http://localhost:4002/api/posts/mock/?limit=6&page=${currIdx}`
+      `http://localhost:4002/api/posts/?limit=6&page=${currIdx}`
     );
     setTimeout(() => {
       setItems((prevItems) => prevItems.concat(response.data.docs));
@@ -38,7 +39,7 @@ const Scroll2Fetch = () => {
 
   useEffect(async () => {
     const response = await axios.get(
-      `http://localhost:4002/api/posts/mock/?limit=6&page=${currIdx}`
+      `http://localhost:4002/api/posts/?limit=6&page=${currIdx}`
     );
     setItems(response.data.docs);
     setCurrIdx(currIdx + 1);
@@ -50,7 +51,7 @@ const Scroll2Fetch = () => {
         dataLength={items.length}
         next={fetchMoredata}
         hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
+        loader={<h4>Keep Scroll Down For More...</h4>}
         // loader={<GridOfSkeleton />}
         endMessage={
           <p>

@@ -20,8 +20,8 @@ const styles = (theme) => ({
   },
   layout: {
     width: "auto",
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
+    // marginLeft: theme.spacing(2),
+    // marginRight: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
       width: 600,
       marginLeft: "auto",
@@ -40,13 +40,13 @@ const styles = (theme) => ({
   },
 });
 
-const App = ({ classes }) => {
+const App = ({ classes, closeAll }) => {
   return (
     <div className="App">
       <CssBaseline />
       <main className={classes.layout}>
         <Paper className={classes.paper} elevation={0}>
-          <StepForm />
+          <StepForm closeAll={closeAll} />
         </Paper>
       </main>
     </div>

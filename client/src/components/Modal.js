@@ -35,6 +35,10 @@ export default () => {
     setOpen(false);
   };
 
+  const closeAll = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <div onClick={handleOpen} style={{ display: open ? "none" : "" }}>
@@ -48,7 +52,7 @@ export default () => {
         scroll="body"
       >
         <Fade in={open}>
-          <Form />
+          <Form closeAll={closeAll} />
         </Fade>
       </Dialog>
     </>
