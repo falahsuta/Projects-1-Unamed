@@ -16,7 +16,7 @@ const style = {
 
 const Scroll2Fetch = () => {
   const [items, setItems] = useState([]);
-  const [currIdx, setCurrIdx] = useState(1);
+  const [currIdx, setCurrIdx] = useState(2);
   const [hasMore, setHasMore] = useState(true);
   const [totalDocument, setTotalDocument] = useState(40);
 
@@ -27,27 +27,33 @@ const Scroll2Fetch = () => {
     }
 
     const response = await axios.get(
-      // `http://localhost:4002/api/posts/mock/?limit=6&page=${currIdx}`
       `http://localhost:4002/api/posts/?limit=6&page=${currIdx}`
+      // `http://localhost:4002/api/posts/mock?limit=6&page=${currIdx}`
     );
+
     setTimeout(() => {
       setItems((prevItems) => prevItems.concat(response.data.docs));
       setCurrIdx((prevIndex) => prevIndex + 1);
-      setTotalDocument(response.data.totalDocs);
+      // setTotalDocument(response.data.totalDocs);
+      // console.log(items);
     }, 1000);
   };
 
   useEffect(async () => {
     const response = await axios.get(
-      `http://localhost:4002/api/posts/?limit=6&page=${currIdx}`
+      // `http://localhost:4002/api/posts/mock?limit=6&page=1`
+      `http://localhost:4002/api/posts?limit=6&page=1`
     );
+
     setItems(response.data.docs);
-    setCurrIdx(currIdx + 1);
+
+    setTotalDocument(response.data.totalDocs);
   }, []);
 
   return (
     <Container>
       <InfiniteScroll
+        pagestart={1}
         dataLength={items.length}
         next={fetchMoredata}
         hasMore={hasMore}

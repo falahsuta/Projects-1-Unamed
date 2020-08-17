@@ -55,13 +55,13 @@ export default (props) => {
             <Divider />
             <br />
           </Container>
-          {post && post.comment && (
-            <Container>
-              <Typography gutterBottom variant="h6" component="h3">
-                Comments
-              </Typography>
-            </Container>
-          )}
+          {/* {post && post.comment && ( */}
+          <Container>
+            <Typography gutterBottom variant="h6" component="h3">
+              {`${post.comment ? "Comments" : "Be The First to Comment"}`}
+            </Typography>
+          </Container>
+          {/* )} */}
           {post && <Comment comment={post.comments} />}
         </CardContent>
       ) : undefined}

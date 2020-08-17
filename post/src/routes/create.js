@@ -11,7 +11,15 @@ const UpvotesComment = require("../models/UpvotesComment");
 const tagAllowedValue = require("../models/tag-allowed-value");
 
 router.post("/api/posts", async (req, res) => {
-  const { title, description, content, tag, image, userId } = req.body;
+  const {
+    title,
+    description,
+    content,
+    tag,
+    image,
+    userId,
+    username,
+  } = req.body;
   const post = Post({
     title,
     description,
@@ -19,6 +27,7 @@ router.post("/api/posts", async (req, res) => {
     tag,
     image,
     userId,
+    username,
   });
 
   const upvotes_post = UpvotesPost({

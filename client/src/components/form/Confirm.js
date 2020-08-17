@@ -25,6 +25,7 @@ const Confirm = ({
   const handleSend = () => {
     if (user.currentUser.id) {
       const userId = user.currentUser.id;
+      const username = user.currentUser.username;
       const value = {
         userId,
         title,
@@ -33,6 +34,7 @@ const Confirm = ({
         tag: tag.toLowerCase(),
         content,
         userId,
+        username: username.slice(0, username.indexOf("@")),
       };
       console.log(value);
       dispatch(createPost(value));

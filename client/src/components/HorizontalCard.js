@@ -104,7 +104,7 @@ export default (props) => {
               <Typography variant="subtitle2">{props.title}</Typography>
               <br />
               <Typography variant="caption" color="textSecondary">
-                JoeMama in{" "}
+                {props.name ? props.name : "JoeMama"} in{" "}
               </Typography>
               <Typography variant="caption" color="textPrimary">
                 {`t/${props.tag}`}

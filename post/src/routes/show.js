@@ -139,34 +139,34 @@ router.get("/api/posts/mock", async (req, res) => {
   const dataMiddle = [
     {
       title: "The Big Bang may be a black hole inside another universe",
-      imglink:
+      image:
         "https://images.unsplash.com/photo-1539321908154-04927596764d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80",
       tag: "Space",
     },
     {
       title: "The Dark Forest Theory of the Universe",
-      imglink: "https://miro.medium.com/max/1944/1*aLGt-w4m0dhJpAP6K4Abqg.jpeg",
+      image: "https://miro.medium.com/max/1944/1*aLGt-w4m0dhJpAP6K4Abqg.jpeg",
       tag: "Wild",
     },
     {
       title: "Is the Universe Real? And Experiment Towards",
-      imglink: "https://miro.medium.com/max/1200/1*zHHvldZopy8y1YcKYez57Q.jpeg",
+      image: "https://miro.medium.com/max/1200/1*zHHvldZopy8y1YcKYez57Q.jpeg",
       tag: "Philosophy",
     },
     {
-      title: "The Big Bang may be a black hole inside another universe kedua",
-      imglink:
+      title: "1 kedua",
+      image:
         "https://images.unsplash.com/photo-1539321908154-04927596764d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80",
       tag: "Space",
     },
     {
-      title: "The Dark Forest Theory of the Universe kedua",
-      imglink: "https://miro.medium.com/max/1944/1*aLGt-w4m0dhJpAP6K4Abqg.jpeg",
+      title: "2 kedua",
+      image: "https://miro.medium.com/max/1944/1*aLGt-w4m0dhJpAP6K4Abqg.jpeg",
       tag: "Wild",
     },
     {
-      title: "Is the Universe Real? And Experiment Towards kedua",
-      imglink: "https://miro.medium.com/max/1200/1*zHHvldZopy8y1YcKYez57Q.jpeg",
+      title: "3 kedua",
+      image: "https://miro.medium.com/max/1200/1*zHHvldZopy8y1YcKYez57Q.jpeg",
       tag: "Philosophy",
     },
   ];

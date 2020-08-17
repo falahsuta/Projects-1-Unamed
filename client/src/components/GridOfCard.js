@@ -13,6 +13,7 @@ export default (props) => {
           title={element.title}
           imglink={element.image}
           tag={element.tag}
+          name={element.username}
         />
         <Divider
           light

@@ -5,6 +5,7 @@ const tagAllowedValue = require("./tag-allowed-value");
 const postSchema = new mongoose.Schema({
   tag: { type: String, enum: tagAllowedValue, required: true },
   userId: String,
+  username: String,
   title: String,
   description: String,
   content: String,
