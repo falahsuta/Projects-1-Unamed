@@ -22,7 +22,7 @@ export default (props) => {
   // const mainPrimaryColor = darkState ? "#d32f2f" : lightBlue[500];
   // const mainSecondaryColor = darkState ? "#d32f2f" : deepPurple[500];
   const mainPrimaryColor = darkState ? "#648dae" : lightBlue[500];
-  const mainSecondaryColor = darkState ? red[700] : deepPurple[500];
+  const mainSecondaryColor = darkState ? red[700] : "#648dae";
   const darkTheme = createMuiTheme({
     palette: {
       type: palletType,

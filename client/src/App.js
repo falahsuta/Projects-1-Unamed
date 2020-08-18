@@ -10,6 +10,7 @@ import Modal from "./components/Modal";
 import Comment from "./components/Comment";
 import SignUpForm from "./components/form/signup/SignUpForm";
 // import SignInForm from "./components/form/signin/SignInForm";
+import TagAll from "./components/TagAll";
 
 export default () => {
   return (

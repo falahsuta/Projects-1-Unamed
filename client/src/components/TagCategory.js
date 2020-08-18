@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { Row, Column, Item } from "@mui-treasury/components/flex";
 import {
@@ -12,9 +12,28 @@ import { useD01InfoStyles } from "@mui-treasury/styles/info/d01";
 import Typography from "@material-ui/core/Typography";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { Link } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
+import ArrowDropDownRoundedIcon from "@material-ui/icons/ArrowDropDownRounded";
+import TagAll from "./TagAll";
+import Dialog from "@material-ui/core/Dialog";
+import Slide from "@material-ui/core/Slide";
+import Paper from "@material-ui/core/Paper";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default React.memo(function DarkRapListItem() {
   const avatarStyles = useDynamicAvatarStyles({ size: 70 });
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   // https://music-artwork.com/wp-content/uploads/2020/06/preview_artwork072.jpg
   // https://music-artwork.com/wp-content/uploads/2018/04/dec110.jpg ==>> rnb
   const tags = [
@@ -30,32 +49,20 @@ export default React.memo(function DarkRapListItem() {
         "https://music-artwork.com/wp-content/uploads/2020/05/preview_artwork55.jpg",
       caption: "Bizzare Things Around",
     },
-    // "COOL",
     {
       name: "Cool",
       link:
         "https://music-artwork.com/wp-content/uploads/2018/04/artwork_music-2.jpg",
       caption: "The coolest thing you'd find",
     },
-    // "INFORMATIVE",
     {
       name: "Informative",
       link:
         "https://music-artwork.com/wp-content/uploads/2020/05/preview_artwork34-1.jpg",
       caption: "You'll find it useful",
     },
-    // "TECH",
-    // {
-    //   name: "Tech",
-    //   link:
-    //     "https://music-artwork.com/wp-content/uploads/2020/06/preview_artwork87.jpg",
-    //   caption: "Makes you a Techie geek",
-    // },
-    // "RNB",
-    // "SOUL",
-    // "POP",
-    // "STUDY_TIPS",
   ];
+
   const renderTag = tags.map((tag) => {
     return (
       <Row mt={1}>
@@ -67,11 +74,45 @@ export default React.memo(function DarkRapListItem() {
           <InfoTitle>
             <Typography color="textPrimary">{tag.name}</Typography>
           </InfoTitle>
+
           <InfoCaption>{`t/${tag.name.toLowerCase()}`}></InfoCaption>
         </Info>
       </Row>
     );
   });
 
-  return <Column gap={2}>{renderTag}</Column>;
+  return (
+    <>
+      <Column gap={2}>{renderTag}</Column>
+      <Grid container direction="row" justify="center" alignItems="flex-start">
+        <Column
+          gap={2}
+          style={{
+            marginBottom: "-33px",
+            marginTop: "-38px",
+            cursor: "pointer",
+          }}
+        >
+          <Info useStyles={useD01InfoStyles}>
+            <InfoCaption>
+              <ArrowDropDownRoundedIcon onClick={handleClickOpen} />
+            </InfoCaption>
+          </Info>
+        </Column>
+      </Grid>
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        // keepMounted
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+        // fullWidth
+        maxWidth="lg"
+        // PaperComponent={TagAll}
+      >
+        <TagAll />
+      </Dialog>
+    </>
+  );
 });
