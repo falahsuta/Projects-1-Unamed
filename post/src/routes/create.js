@@ -141,6 +141,7 @@ router.post("/api/posts/comments/replies", async (req, res) => {
 
   comment.replies.push(reply);
 
+  console.log(comment);
   await comment.save();
   await reply.save();
   await upvotes_reply.save();

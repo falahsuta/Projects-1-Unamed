@@ -5,6 +5,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import Form from "./form/Form";
 import Fab from "./Fab";
+import { useSelector, useDispatch } from "react-redux";
 import Dialog from "@material-ui/core/Dialog";
 
 const useStyles = makeStyles((theme) => ({
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default () => {
   const classes = useStyles();
+  const user = useSelector((state) => state.user);
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -41,9 +43,11 @@ export default () => {
 
   return (
     <>
-      <div onClick={handleOpen} style={{ display: open ? "none" : "" }}>
-        <Fab />
-      </div>
+      {user && user.currentUser && (
+        <div onClick={handleOpen} style={{ display: open ? "none" : "" }}>
+          <Fab />
+        </div>
+      )}
       <Dialog
         maxWidth
         onClose={handleClose}

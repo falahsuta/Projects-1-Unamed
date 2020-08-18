@@ -18,12 +18,14 @@ import TagAll from "./TagAll";
 import Dialog from "@material-ui/core/Dialog";
 import Slide from "@material-ui/core/Slide";
 import Paper from "@material-ui/core/Paper";
+import { useHistory } from "react-router-dom";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default React.memo(function DarkRapListItem() {
+  const history = useHistory();
   const avatarStyles = useDynamicAvatarStyles({ size: 70 });
   const [open, setOpen] = useState(false);
 
@@ -74,8 +76,16 @@ export default React.memo(function DarkRapListItem() {
           <InfoTitle>
             <Typography color="textPrimary">{tag.name}</Typography>
           </InfoTitle>
-
-          <InfoCaption>{`t/${tag.name.toLowerCase()}`}></InfoCaption>
+          <Link to="/yes">
+            <InfoCaption
+            // onClick={() => {
+            // history.push("/yes");
+            // window.location.reload();
+            // }}
+            >
+              {`t/${tag.name.toLowerCase()}`}>
+            </InfoCaption>
+          </Link>
         </Info>
       </Row>
     );

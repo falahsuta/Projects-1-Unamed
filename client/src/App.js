@@ -6,11 +6,7 @@ import AppBar from "./components/AppBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Landing from "./components/pages/Landing";
 
-import Modal from "./components/Modal";
-import Comment from "./components/Comment";
 import SignUpForm from "./components/form/signup/SignUpForm";
-// import SignInForm from "./components/form/signin/SignInForm";
-import TagAll from "./components/TagAll";
 
 export default () => {
   return (
@@ -18,17 +14,19 @@ export default () => {
       <Container>
         <DarkMode>
           <Router>
+            {/* <div> */}
             <AppBar />
             <Switch>
-              <Route path="/" exact component={Landing} />
               {/* <Route path="/tag" exact component={TagPage} /> */}
               {/* <Comment /> */}
               {/* <SignInForm /> */}
               {/* <SignUpForm /> */}
               {/* <SignInForm /> */}
               {/* <Modal /> */}
-              <Route path="/yes" exact component={SignUpForm} />
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/yes" component={SignUpForm} />
             </Switch>
+            {/* </div> */}
           </Router>
         </DarkMode>
       </Container>

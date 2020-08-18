@@ -29,6 +29,7 @@ const useStyles = makeStyles({
 export default (props) => {
   const classes = useStyles();
   const post = useSelector((state) => state.post);
+  const user = useSelector((state) => state.user);
   const [showReply, setShowReply] = useState(false);
 
   const replyTrueIfClicked = () => {

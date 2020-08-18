@@ -11,12 +11,14 @@ import axios from "axios";
 const ReplyField = function (props) {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.post);
+
+  const IdPost = post.post._id;
   const [replytext, setReplyText] = React.useState("");
   const handleChange = (event) => {
     setReplyText(event.target.value);
   };
 
-  const sendCommentToServer = () => {
+  const sendCommentToServer = async () => {
     const { postId } = props;
     const body = replytext;
 
@@ -31,20 +33,19 @@ const ReplyField = function (props) {
     props.action();
   };
 
-  const thisFromReplies = () => {
+  const thisFromReplies = async () => {
     const { commentToId } = props;
     console.log(commentToId);
     const body = replytext;
 
-    const value = {
+    const val = {
       commentToId,
       body,
     };
 
-    dispatch(commentReply(value)).then((action) => {
-      console.log(action);
-    });
-    dispatch(fetchPost(post.post._id));
+    await dispatch(commentReply(val));
+
+    dispatch(fetchPost(IdPost));
     setReplyText("");
     props.action();
   };

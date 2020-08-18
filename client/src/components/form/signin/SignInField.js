@@ -81,7 +81,10 @@ const FirstStep = ({
     dispatch(signIn(value))
       .then((action) => {
         setSuccess("Success Authenticated");
-        dispatch(action);
+        setTimeout(() => {
+          dispatch(action);
+        }, 300);
+
         closeAll();
       })
       .catch((err) => {

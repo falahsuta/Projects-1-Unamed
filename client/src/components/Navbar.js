@@ -27,7 +27,6 @@ export default () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  console.log(user);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
 
