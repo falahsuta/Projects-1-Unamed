@@ -99,3 +99,14 @@ export const commentPost = (value) => async (dispatch) => {
     // payload: { ...response.data, currentUser: null },
   });
 };
+
+export const commentReply = (value) => async (dispatch) => {
+  const response = await axios.post(
+    "http://localhost:4002/api/posts/comments/replies",
+    value
+  );
+
+  dispatch({
+    type: "COMMENT_REPLY",
+  });
+};

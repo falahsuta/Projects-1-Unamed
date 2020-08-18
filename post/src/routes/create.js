@@ -133,7 +133,8 @@ router.post("/api/posts/comments/replies", async (req, res) => {
     body,
     commentToId,
   });
-
+  console.log("down here: ");
+  console.log(comment);
   const upvotes_reply = UpvotesComment({
     commentId: reply.id,
   });

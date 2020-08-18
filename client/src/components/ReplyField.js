@@ -3,12 +3,14 @@ import TextField from "@material-ui/core/TextField";
 import onClickOutside from "react-onclickoutside";
 import ReplyTag from "./ReplyTag";
 import Grid from "@material-ui/core/Grid";
-import { fetchPost, commentPost } from "../actions";
+import { fetchPost, commentPost, commentReply } from "../actions";
 import { useSelector, useDispatch } from "react-redux";
 import OutsideClickHandler from "react-outside-click-handler";
+import axios from "axios";
 
 const ReplyField = function (props) {
   const dispatch = useDispatch();
+  const post = useSelector((state) => state.post);
   const [replytext, setReplyText] = React.useState("");
   const handleChange = (event) => {
     setReplyText(event.target.value);
@@ -30,7 +32,21 @@ const ReplyField = function (props) {
   };
 
   const thisFromReplies = () => {
-    console.log("this from replies");
+    const { commentToId } = props;
+    console.log(commentToId);
+    const body = replytext;
+
+    const value = {
+      commentToId,
+      body,
+    };
+
+    dispatch(commentReply(value)).then((action) => {
+      console.log(action);
+    });
+    dispatch(fetchPost(post.post._id));
+    setReplyText("");
+    props.action();
   };
 
   const actionWhenClick = () => {

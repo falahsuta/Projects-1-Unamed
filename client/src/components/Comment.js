@@ -51,22 +51,11 @@ const Comment = ({ comment }) => {
               justify="flex-start"
               alignItems="flex-start"
             >
-              {/* {!showReply && (
-                <>
-                  <CustomTag buttonText="Reply" action={replyTrueIfClicked}>
-                    <ReplyRoundedIcon />
-                  </CustomTag>
-
-                  <CustomTag buttonText="4" widthSpec={30}>
-                    <KeyboardArrowUpOutlinedIcon />
-                  </CustomTag>
-                </>
-              )} */}
-
-              {/* {showReply && <ReplyField action={replyTrueIfClicked} />} */}
-
               {showReply ? (
-                <ReplyField action={replyTrueIfClicked} />
+                <ReplyField
+                  commentToId={comment._id}
+                  action={replyTrueIfClicked}
+                />
               ) : (
                 <>
                   <ReplyTag buttonText="Reply" action={replyTrueIfClicked}>
