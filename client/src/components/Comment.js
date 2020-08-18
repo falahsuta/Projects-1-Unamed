@@ -7,7 +7,7 @@ import Avatar from "@material-ui/core/Avatar";
 import ReplyRoundedIcon from "@material-ui/icons/ReplyRounded";
 import Button from "@material-ui/core/Button";
 import KeyboardArrowUpOutlinedIcon from "@material-ui/icons/KeyboardArrowUpOutlined";
-import CustomTag from "./ReplyTag";
+import ReplyTag from "./ReplyTag";
 import onClickOutside from "react-onclickoutside";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -51,7 +51,7 @@ const Comment = ({ comment }) => {
               justify="flex-start"
               alignItems="flex-start"
             >
-              {!showReply && (
+              {/* {!showReply && (
                 <>
                   <CustomTag buttonText="Reply" action={replyTrueIfClicked}>
                     <ReplyRoundedIcon />
@@ -61,9 +61,23 @@ const Comment = ({ comment }) => {
                     <KeyboardArrowUpOutlinedIcon />
                   </CustomTag>
                 </>
-              )}
+              )} */}
 
-              {showReply && <ReplyField action={replyTrueIfClicked} />}
+              {/* {showReply && <ReplyField action={replyTrueIfClicked} />} */}
+
+              {showReply ? (
+                <ReplyField action={replyTrueIfClicked} />
+              ) : (
+                <>
+                  <ReplyTag buttonText="Reply" action={replyTrueIfClicked}>
+                    <ReplyRoundedIcon />
+                  </ReplyTag>
+
+                  <ReplyTag buttonText="4" widthSpec={30}>
+                    <KeyboardArrowUpOutlinedIcon />
+                  </ReplyTag>
+                </>
+              )}
             </Grid>
           </CardContent>
         </Card>

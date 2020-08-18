@@ -1,7 +1,13 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 
 const Success = () => {
+  useEffect(() => {
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+  }, []);
+
   return (
     <Fragment>
       {/* <Typography variant="h2" align="center">

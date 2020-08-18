@@ -12,6 +12,12 @@ import Comment from "../Comment";
 import Divider from "@material-ui/core/Divider";
 import { Container } from "@material-ui/core";
 
+import ReplyTag from "../ReplyTag";
+import Grid from "@material-ui/core/Grid";
+import ReplyRoundedIcon from "@material-ui/icons/ReplyRounded";
+import ReplyField from "../ReplyField";
+import KeyboardArrowUpOutlinedIcon from "@material-ui/icons/KeyboardArrowUpOutlined";
+
 import { useSelector } from "react-redux";
 
 const useStyles = makeStyles({
@@ -23,8 +29,13 @@ const useStyles = makeStyles({
 export default (props) => {
   const classes = useStyles();
   const post = useSelector((state) => state.post);
+  const [showReply, setShowReply] = useState(false);
 
-  console.log(post);
+  const replyTrueIfClicked = () => {
+    setShowReply(!showReply);
+  };
+
+  // console.log(post);
   return (
     <Card className={classes.root}>
       <br />
@@ -52,13 +63,37 @@ export default (props) => {
               {post ? post.post.content : ""}
             </Typography>
             <br />
+            <Grid
+              container
+              direction="row-reverse"
+              justify="flex-start"
+              alignItems="flex-start"
+            >
+              {showReply ? (
+                <ReplyField postId={props.id} action={replyTrueIfClicked} />
+              ) : (
+                <>
+                  <ReplyTag buttonText="Reply" action={replyTrueIfClicked}>
+                    <ReplyRoundedIcon />
+                  </ReplyTag>
+
+                  <ReplyTag buttonText="4" widthSpec={30}>
+                    <KeyboardArrowUpOutlinedIcon />
+                  </ReplyTag>
+                </>
+              )}
+            </Grid>
+            {/* <Container> */}
             <Divider />
             <br />
-          </Container>
-          {/* {post && post.comment && ( */}
-          <Container>
+            {/* </Container> */}
+
             <Typography gutterBottom variant="h6" component="h3">
-              {`${post.comment ? "Comments" : "Be The First to Comment"}`}
+              {`${
+                post.comments.length > 0
+                  ? "Comments"
+                  : "Be The First to Comment"
+              }`}
             </Typography>
           </Container>
           {/* )} */}

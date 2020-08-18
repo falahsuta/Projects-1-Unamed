@@ -87,3 +87,15 @@ export const signOut = () => async (dispatch) => {
     payload: { ...response.data, currentUser: null },
   });
 };
+
+export const commentPost = (value) => async (dispatch) => {
+  const response = await axios.post(
+    "http://localhost:4002/api/posts/comments",
+    value
+  );
+
+  dispatch({
+    type: "COMMENT_POST",
+    // payload: { ...response.data, currentUser: null },
+  });
+};

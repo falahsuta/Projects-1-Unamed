@@ -122,7 +122,7 @@ export default (props) => {
         scroll="body"
       >
         <Fade in={open}>
-          <Custom />
+          <Custom id={props.id} />
         </Fade>
       </Dialog>
     </>
