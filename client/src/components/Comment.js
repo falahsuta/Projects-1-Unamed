@@ -14,6 +14,7 @@ import TextField from "@material-ui/core/TextField";
 import ReplyField from "./ReplyField";
 import Divider from "@material-ui/core/Divider";
 import { commentData } from "./data";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles({
   root: {
@@ -23,6 +24,7 @@ const useStyles = makeStyles({
 });
 
 const Comment = ({ comment }) => {
+  const user = useSelector((state) => state.user);
   const classes = useStyles();
   const [showReply, setShowReply] = useState(false);
 
@@ -33,6 +35,10 @@ const Comment = ({ comment }) => {
   const nestedComments = (comment.replies || []).map((comment) => {
     return <Comment key={comment._id} comment={comment} type="child" />;
   });
+
+  const spacing = (num) => {
+    return <div style={{ marginTop: "3px", width: "30px", height: num }}></div>;
+  };
 
   return (
     <>
@@ -45,29 +51,32 @@ const Comment = ({ comment }) => {
             <Typography variant="body2" color="textSecondary" component="p">
               {comment.body}
             </Typography>
-            <Grid
-              container
-              direction="row-reverse"
-              justify="flex-start"
-              alignItems="flex-start"
-            >
-              {showReply ? (
-                <ReplyField
-                  commentToId={comment._id}
-                  action={replyTrueIfClicked}
-                />
-              ) : (
-                <>
-                  <ReplyTag buttonText="Reply" action={replyTrueIfClicked}>
-                    <ReplyRoundedIcon />
-                  </ReplyTag>
+            {spacing("40px")}
+            {user && user.currentUser && (
+              <Grid
+                container
+                direction="row-reverse"
+                justify="flex-start"
+                alignItems="flex-start"
+              >
+                {showReply ? (
+                  <ReplyField
+                    commentToId={comment._id}
+                    action={replyTrueIfClicked}
+                  />
+                ) : (
+                  <>
+                    <ReplyTag buttonText="Reply" action={replyTrueIfClicked}>
+                      <ReplyRoundedIcon />
+                    </ReplyTag>
 
-                  <ReplyTag buttonText="4" widthSpec={30}>
-                    <KeyboardArrowUpOutlinedIcon />
-                  </ReplyTag>
-                </>
-              )}
-            </Grid>
+                    <ReplyTag buttonText="4" widthSpec={30}>
+                      <KeyboardArrowUpOutlinedIcon />
+                    </ReplyTag>
+                  </>
+                )}
+              </Grid>
+            )}
           </CardContent>
         </Card>
         {nestedComments}

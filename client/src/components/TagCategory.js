@@ -87,7 +87,7 @@ export default React.memo(function DarkRapListItem() {
             onClick={() => {
               history.push(`/tag/${tag.name.toLowerCase()}`);
               dispatch(closeFirstPost());
-              window.location.reload();
+              // window.location.reload();
             }}
           >
             {`t/${tag.name.toLowerCase()}`}>

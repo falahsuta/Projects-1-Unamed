@@ -5,6 +5,7 @@ import { Container } from "@material-ui/core";
 import AppBar from "./components/AppBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Landing from "./components/pages/Landing";
+import ScrollToTop from "./components/ScrollToTop";
 
 import SignUpForm from "./components/form/signup/SignUpForm";
 import TagPage from "./components/pages/TagPage";
@@ -16,6 +17,7 @@ export default () => {
         <DarkMode>
           <Router>
             <AppBar />
+            <ScrollToTop />
             <Switch>
               {/* <Route path="/tag" exact component={TagPage} /> */}
               {/* <Comment /> */}

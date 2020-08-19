@@ -15,6 +15,7 @@ import { useHistory } from "react-router-dom";
 import TagAll from "./TagAll";
 import Slide from "@material-ui/core/Slide";
 import Contribute from "./Contribute";
+import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +30,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default () => {
+  const location = useLocation();
+
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -135,7 +138,11 @@ export default () => {
           align="start"
           style={{ left: "10px", position: "relative" }}
         >
-          <Button disableRipple={true}>MarketPlace</Button>
+          <Button disableRipple={true}>
+            {location.pathname === "/"
+              ? "Home"
+              : location.pathname.replace("/tag/", "")}
+          </Button>
         </Grid>
         <Grid item xs align="center">
           <Button disableRipple={true}>DissCuss</Button>

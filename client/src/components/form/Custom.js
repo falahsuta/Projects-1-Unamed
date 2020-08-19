@@ -64,26 +64,28 @@ export default (props) => {
               {post ? post.post.content : ""}
             </Typography>
             <br />
-            <Grid
-              container
-              direction="row-reverse"
-              justify="flex-start"
-              alignItems="flex-start"
-            >
-              {showReply ? (
-                <ReplyField postId={props.id} action={replyTrueIfClicked} />
-              ) : (
-                <>
-                  <ReplyTag buttonText="Reply" action={replyTrueIfClicked}>
-                    <ReplyRoundedIcon />
-                  </ReplyTag>
+            {user && user.currentUser && (
+              <Grid
+                container
+                direction="row-reverse"
+                justify="flex-start"
+                alignItems="flex-start"
+              >
+                {showReply ? (
+                  <ReplyField postId={props.id} action={replyTrueIfClicked} />
+                ) : (
+                  <>
+                    <ReplyTag buttonText="Reply" action={replyTrueIfClicked}>
+                      <ReplyRoundedIcon />
+                    </ReplyTag>
 
-                  <ReplyTag buttonText="4" widthSpec={30}>
-                    <KeyboardArrowUpOutlinedIcon />
-                  </ReplyTag>
-                </>
-              )}
-            </Grid>
+                    <ReplyTag buttonText="4" widthSpec={30}>
+                      <KeyboardArrowUpOutlinedIcon />
+                    </ReplyTag>
+                  </>
+                )}
+              </Grid>
+            )}
             {/* <Container> */}
             <Divider />
             <br />
