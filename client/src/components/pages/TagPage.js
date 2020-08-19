@@ -5,14 +5,51 @@ import Troll2Fetch from "../Troll2Fetch";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Sticky from "react-stickynode";
+import Typography from "@material-ui/core/Typography";
+import {
+  Info,
+  InfoTitle,
+  InfoSubtitle,
+  InfoCaption,
+} from "@mui-treasury/components/info";
+import Header from "../Header";
+import headerData from "../header-data";
+import { useD01InfoStyles } from "@mui-treasury/styles/info/d01";
+
+import { Container } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 
 export default (props) => {
+  const cap = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   return (
     <div style={{ marginLeft: "30px" }}>
+      {/* <Container> */}
+      <Box my={2} mr={3}>
+        <Header post={headerData} tag={`t/${cap(props.match.params.tag)}`} />
+      </Box>
+      {/* </Container> */}
+
+      {/* <Info useStyles={useD01InfoStyles}>
+        <InfoTitle>
+          <Typography variant="h6" color="textPrimary">
+            {`t/${cap(props.match.params.tag)}`}
+          </Typography>
+        </InfoTitle>
+      </Info> */}
+
       <br />
       <br />
-      <br />
-      <br />
+      <Info useStyles={useD01InfoStyles} mb={1}>
+        <InfoTitle>
+          <Typography color="textPrimary">
+            {"Our Picks Entry".toUpperCase()}
+          </Typography>
+        </InfoTitle>
+      </Info>
+
       <Grid
         container
         direction="row"
@@ -20,6 +57,7 @@ export default (props) => {
         alignItems="flex-start"
       >
         <Grid item xs={8} wrap="nowrap">
+          <div style={{ height: "3px" }}></div>
           <Troll2Fetch tag={props.match.params.tag} />
         </Grid>
         <Grid item xs={3} style={{ marginLeft: "40px" }}>

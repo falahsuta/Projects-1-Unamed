@@ -18,6 +18,7 @@ const style = {
 
 const Scroll2Fetch = (props) => {
   const { tag } = props;
+  const { userId } = props;
 
   const [items, setItems] = useState([]);
   const [currIdx, setCurrIdx] = useState(2);
@@ -31,8 +32,8 @@ const Scroll2Fetch = (props) => {
     }
 
     const response = await axios.get(
-      `http://localhost:4002/api/posts/?${
-        tag ? `t=${tag}&` : ""
+      `http://localhost:4002/api/posts/?${tag ? `t=${tag}&` : ""}${
+        userId ? `ui=${userId}&` : ""
       }limit=6&page=${currIdx}`
       // `http://localhost:4002/api/posts/mock?limit=6&page=${currIdx}`
     );
@@ -45,7 +46,9 @@ const Scroll2Fetch = (props) => {
 
   useEffect(async () => {
     const response = await axios.get(
-      `http://localhost:4002/api/posts?limit=6&page=1${tag ? `&t=${tag}` : ""}`
+      `http://localhost:4002/api/posts?limit=6&page=1${tag ? `&t=${tag}` : ""}${
+        userId ? `&ui=${userId}` : ""
+      }`
     );
     setItems(response.data.docs);
     setTotalDocument(response.data.totalDocs);

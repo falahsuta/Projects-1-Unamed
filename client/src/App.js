@@ -15,7 +15,6 @@ export default () => {
       <Container>
         <DarkMode>
           <Router>
-            {/* <div> */}
             <AppBar />
             <Switch>
               {/* <Route path="/tag" exact component={TagPage} /> */}
@@ -27,7 +26,6 @@ export default () => {
               <Route exact path="/" component={Landing} />
               <Route exact path="/tag/:tag" component={TagPage} />
             </Switch>
-            {/* </div> */}
           </Router>
         </DarkMode>
       </Container>

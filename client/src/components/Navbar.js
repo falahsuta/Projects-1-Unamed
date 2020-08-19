@@ -12,6 +12,9 @@ import SignInForm from "./form/signin/SignInForm";
 import SignUpForm from "./form/signup/SignUpForm";
 import { signOut } from "../actions";
 import { useHistory } from "react-router-dom";
+import TagAll from "./TagAll";
+import Slide from "@material-ui/core/Slide";
+import Contribute from "./Contribute";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,14 +24,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="down" ref={ref} {...props} />;
+});
+
 export default () => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-
+  console.log(user);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const [openClick, setOpenClick] = useState(false);
 
   const handleOpen = (label) => {
     label === "SignUp" ? setShowRegister(true) : setShowLogin(true);
@@ -38,11 +46,21 @@ export default () => {
     label === "SignUp" ? setShowRegister(false) : setShowLogin(false);
   };
 
+  const handleClickOpen = () => {
+    setOpenClick(true);
+  };
+
+  const handleClickClose = () => {
+    setOpenClick(false);
+  };
+
   const handleActionLog = (label) => {
     if (label === "Logout") {
       dispatch(signOut());
-    } else {
-      history.push("/yes");
+    }
+
+    if (label === "Contribution") {
+      setOpenClick(true);
     }
   };
 
@@ -61,7 +79,7 @@ export default () => {
         label: "Login",
         form: <SignInForm closeAll={closeAll} />,
       },
-      currentUser && { label: "Account" },
+      currentUser && { label: "Contribution" },
       currentUser && { label: "Logout" },
     ]
       .filter((linkConfig) => linkConfig)
@@ -122,6 +140,20 @@ export default () => {
           {user && links(user.currentUser)}
         </Grid>
       </Grid>
+
+      <Dialog
+        open={openClick}
+        TransitionComponent={Transition}
+        onClose={handleClickClose}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+        maxWidth="lg"
+        // keepMounted
+        // fullWidth
+        // PaperComponent={TagAll}
+      >
+        <Contribute />
+      </Dialog>
     </div>
   );
 };

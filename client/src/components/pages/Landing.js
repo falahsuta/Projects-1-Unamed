@@ -11,6 +11,7 @@ import Fab from "../Fab";
 // import Scroll2Fetch from "../Scoll2Fetch";
 import Troll2Fetch from "../Troll2Fetch";
 // import { useSelector, useDispatch } from "react-redux";
+import Contribute from "../Contribute";
 
 export default () => {
   return (
@@ -21,10 +22,10 @@ export default () => {
         </Box>
       </Container>
       {/* <Fab /> */}
-      <Modal />
-      <Recommend />
-
-      <Troll2Fetch />
+      {/* <Modal /> */}
+      {/* <Recommend /> */}
+      {/* <Troll2Fetch /> */}
+      {/* <Contribute /> */}
     </>
   );
 };

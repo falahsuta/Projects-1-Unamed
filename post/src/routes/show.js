@@ -38,6 +38,14 @@ router.get("/api/posts", async (req, res) => {
     });
   }
 
+  if (req.query.page && req.query.limit && req.query.ui) {
+    const posts = await Post.paginate(
+      { userId: req.query.ui },
+      { page: req.query.page, limit: req.query.limit }
+    );
+    return res.send(posts);
+  }
+
   if (req.query.page && req.query.limit && req.query.t) {
     const posts = await Post.paginate(
       { tag: req.query.t },

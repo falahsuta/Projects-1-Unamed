@@ -57,7 +57,7 @@ export default (props) => {
               color="inherit"
               gutterBottom
             >
-              {post.title}
+              {props.tag ? props.tag : post.title}
             </Typography>
             <Typography variant="h7" color="inherit" paragraph>
               {post.description}
