@@ -38,8 +38,34 @@ const showReducer = (show = true, action) => {
   }
 };
 
+const timelineReducer = (timeline = null, action) => {
+  switch (action.type) {
+    case "POST_TIMELINE":
+      return action.payload;
+    case "TAG_TIMELINE":
+      return action.payload;
+    case "CLOSE_FIRSTPOST":
+      return null;
+    default:
+      return timeline;
+  }
+};
+
+const contribeReducer = (contribe = null, action) => {
+  switch (action.type) {
+    case "POST_CONTRIBE":
+      return action.payload;
+    case "CLOSE_CONTRIBE":
+      return null;
+    default:
+      return contribe;
+  }
+};
+
 export default combineReducers({
   post: postReducer,
   user: userReducer,
   show: showReducer,
+  timeline: timelineReducer,
+  contribe: contribeReducer,
 });

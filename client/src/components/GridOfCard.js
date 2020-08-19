@@ -14,13 +14,14 @@ export default (props) => {
           imglink={element.image}
           tag={element.tag}
           name={element.username}
+          markProps={props.markProps}
         />
         <Divider
           light
           style={{
             margin: "13px 0",
             // height: index === 0 ? "0.6px" : "1px",
-            width: "355px",
+            width: props.markProps ? "385px" : "355px",
             display: index === datalength ? "none" : undefined,
           }}
         />

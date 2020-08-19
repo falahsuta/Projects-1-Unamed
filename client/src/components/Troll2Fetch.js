@@ -18,12 +18,13 @@ const style = {
 
 const Scroll2Fetch = (props) => {
   const { tag } = props;
-  const { userId } = props;
 
-  const [items, setItems] = useState([]);
+  // const timeline = useSelector((state) => state.timeline);
+
+  const [items, setItems] = useState(props.timeline.docs);
   const [currIdx, setCurrIdx] = useState(2);
   const [hasMore, setHasMore] = useState(true);
-  const [totalDocument, setTotalDocument] = useState(40);
+  const [totalDocument, setTotalDocument] = useState(props.timeline.totalDocs);
 
   const fetchMoredata = async () => {
     if (items.length >= totalDocument) {
@@ -32,10 +33,9 @@ const Scroll2Fetch = (props) => {
     }
 
     const response = await axios.get(
-      `http://localhost:4002/api/posts/?${tag ? `t=${tag}&` : ""}${
-        userId ? `ui=${userId}&` : ""
+      `http://localhost:4002/api/posts/?${
+        tag ? `t=${tag}&` : ""
       }limit=6&page=${currIdx}`
-      // `http://localhost:4002/api/posts/mock?limit=6&page=${currIdx}`
     );
 
     setTimeout(() => {
@@ -43,16 +43,6 @@ const Scroll2Fetch = (props) => {
       setCurrIdx((prevIndex) => prevIndex + 1);
     }, 1000);
   };
-
-  useEffect(async () => {
-    const response = await axios.get(
-      `http://localhost:4002/api/posts?limit=6&page=1${tag ? `&t=${tag}` : ""}${
-        userId ? `&ui=${userId}` : ""
-      }`
-    );
-    setItems(response.data.docs);
-    setTotalDocument(response.data.totalDocs);
-  }, []);
 
   const renderInfinite = () => {
     return (

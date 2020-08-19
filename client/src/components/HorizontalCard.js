@@ -24,6 +24,12 @@ const useStyles = makeStyles((theme) => ({
     height: 105,
     backgroundColor: "transparent",
   },
+  rootOvd: {
+    display: "flex",
+    width: 390,
+    height: 105,
+    backgroundColor: "transparent",
+  },
   details: {
     display: "flex",
     flexDirection: "column",
@@ -79,6 +85,7 @@ export default (props) => {
   };
 
   const handleClose = () => {
+    dispatch(closePost());
     setOpen(false);
   };
 
@@ -88,7 +95,7 @@ export default (props) => {
         <GoogleFontLoader fonts={[{ font: "Barlow", weights: [400, 600] }]} />
       </NoSsr>
       <Card
-        className={classes.root}
+        className={props.markProps ? classes.rootOvd : classes.root}
         elevation={0}
         style={{ cursor: "pointer" }}
         onClick={handleOpen}

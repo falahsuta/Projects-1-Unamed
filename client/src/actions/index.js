@@ -111,12 +111,49 @@ export const commentReply = (value) => async (dispatch) => {
   });
 };
 
-// export const getFirstPost = () => async (dispatch) => {
-//   const response = await axios.get(
-//     'http://localhost:4002/api/posts?limit=6&page=1'
-//   );
+export const getFirstPost = () => async (dispatch) => {
+  const response = await axios.get(
+    "http://localhost:4002/api/posts?limit=6&page=1"
+  );
 
-// }
+  dispatch({
+    type: "POST_TIMELINE",
+    payload: response.data,
+  });
+};
+
+export const getTagPost = (tag) => async (dispatch) => {
+  const response = await axios.get(
+    `http://localhost:4002/api/posts?limit=6&page=1&t=${tag}`
+  );
+
+  dispatch({
+    type: "TAG_TIMELINE",
+    payload: response.data,
+  });
+};
+
+export const getContributePost = (id) => async (dispatch) => {
+  const response = await axios.get(`http://localhost:4002/api/posts?ui=${id}`);
+
+  dispatch({
+    type: "POST_CONTRIBE",
+    payload: response.data.post,
+  });
+};
+
+export const closeFirstPost = () => {
+  return {
+    type: "CLOSE_FIRSTPOST",
+  };
+};
+
+export const closeContribe = () => {
+  return {
+    type: "CLOSE_CONTRIBE",
+  };
+};
+
 export const navigate = () => {
   return {
     type: "NAVIGATE",

@@ -10,10 +10,23 @@ import Fab from "../Fab";
 // import Comment from "../Comment";
 // import Scroll2Fetch from "../Scoll2Fetch";
 import Troll2Fetch from "../Troll2Fetch";
-// import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Contribute from "../Contribute";
+import { getFirstPost } from "../../actions";
 
 export default () => {
+  const timeline = useSelector((state) => state.timeline);
+  const dispatch = useDispatch();
+
+  const getRequiredPost = async () => {
+    await dispatch(getFirstPost());
+  };
+
+  if (!timeline) {
+    getRequiredPost();
+  }
+  // console.log(timeline);
+
   return (
     <>
       <Container>
@@ -22,9 +35,9 @@ export default () => {
         </Box>
       </Container>
       {/* <Fab /> */}
-      {/* <Modal /> */}
-      {/* <Recommend /> */}
-      {/* <Troll2Fetch /> */}
+      <Modal />
+      <Recommend />
+      {timeline && <Troll2Fetch timeline={timeline} />}
       {/* <Contribute /> */}
     </>
   );

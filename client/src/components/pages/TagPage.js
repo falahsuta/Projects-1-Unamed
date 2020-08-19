@@ -19,26 +19,30 @@ import { useD01InfoStyles } from "@mui-treasury/styles/info/d01";
 import { Container } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 
+import { useSelector, useDispatch } from "react-redux";
+import { getTagPost } from "../../actions";
+
 export default (props) => {
+  const timeline = useSelector((state) => state.timeline);
+  const dispatch = useDispatch();
+
+  const getRequiredPost = async () => {
+    await dispatch(getTagPost(props.match.params.tag));
+  };
+
+  if (!timeline) {
+    getRequiredPost();
+  }
+
   const cap = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
   return (
     <div style={{ marginLeft: "30px" }}>
-      {/* <Container> */}
       <Box my={2} mr={3}>
         <Header post={headerData} tag={`t/${cap(props.match.params.tag)}`} />
       </Box>
-      {/* </Container> */}
-
-      {/* <Info useStyles={useD01InfoStyles}>
-        <InfoTitle>
-          <Typography variant="h6" color="textPrimary">
-            {`t/${cap(props.match.params.tag)}`}
-          </Typography>
-        </InfoTitle>
-      </Info> */}
 
       <br />
       <br />
@@ -58,7 +62,9 @@ export default (props) => {
       >
         <Grid item xs={8} wrap="nowrap">
           <div style={{ height: "3px" }}></div>
-          <Troll2Fetch tag={props.match.params.tag} />
+          {timeline && (
+            <Troll2Fetch timeline={timeline} tag={props.match.params.tag} />
+          )}
         </Grid>
         <Grid item xs={3} style={{ marginLeft: "40px" }}>
           <Sticky top={55} enableTransforms={false}>

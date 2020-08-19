@@ -10,7 +10,7 @@ import Fade from "@material-ui/core/Fade";
 import Form from "./form/Form";
 import SignInForm from "./form/signin/SignInForm";
 import SignUpForm from "./form/signup/SignUpForm";
-import { signOut } from "../actions";
+import { signOut, closeContribe } from "../actions";
 import { useHistory } from "react-router-dom";
 import TagAll from "./TagAll";
 import Slide from "@material-ui/core/Slide";
@@ -33,7 +33,7 @@ export default () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  console.log(user);
+
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [openClick, setOpenClick] = useState(false);
@@ -52,6 +52,10 @@ export default () => {
 
   const handleClickClose = () => {
     setOpenClick(false);
+    // transition paused close for better unmounting contribes component
+    setTimeout(() => {
+      dispatch(closeContribe());
+    }, 300);
   };
 
   const handleActionLog = (label) => {
@@ -144,15 +148,18 @@ export default () => {
       <Dialog
         open={openClick}
         TransitionComponent={Transition}
-        onClose={handleClickClose}
+        onClose={() => handleClickClose()}
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
-        maxWidth="lg"
+        maxWidth="md"
+        scroll="body"
         // keepMounted
         // fullWidth
         // PaperComponent={TagAll}
       >
-        <Contribute />
+        {user && user.currentUser && (
+          <Contribute openClick={openClick} userId={user.currentUser.id} />
+        )}
       </Dialog>
     </div>
   );

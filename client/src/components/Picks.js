@@ -28,11 +28,17 @@ export default (props) => {
         alignItems="flex-start"
       >
         <Grid item xs={4}>
-          <GridOfCard customData={left} />
+          <GridOfCard markProps={props.markProps} customData={left} />
         </Grid>
 
-        <Grid item xs={4} style={{ marginLeft: props.tag ? "140px" : "20px" }}>
-          <GridOfCard customData={right} />
+        <Grid
+          item
+          xs={4}
+          style={{
+            marginLeft: props.tag || props.markProps ? "140px" : "20px",
+          }}
+        >
+          <GridOfCard markProps={props.markProps} customData={right} />
         </Grid>
       </Grid>
     </>
