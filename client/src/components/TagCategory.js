@@ -19,6 +19,8 @@ import Dialog from "@material-ui/core/Dialog";
 import Slide from "@material-ui/core/Slide";
 import Paper from "@material-ui/core/Paper";
 import { useHistory } from "react-router-dom";
+// import { useSelector, useDispatch } from "react-redux";
+// import { navigate, antinavigate } from "../actions";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -26,6 +28,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default React.memo(function DarkRapListItem() {
   const history = useHistory();
+  // const dispatch = useDispatch();
   const avatarStyles = useDynamicAvatarStyles({ size: 70 });
   const [open, setOpen] = useState(false);
 
@@ -76,16 +79,17 @@ export default React.memo(function DarkRapListItem() {
           <InfoTitle>
             <Typography color="textPrimary">{tag.name}</Typography>
           </InfoTitle>
-          <Link to="/yes">
-            <InfoCaption
-            // onClick={() => {
-            // history.push("/yes");
-            // window.location.reload();
-            // }}
-            >
-              {`t/${tag.name.toLowerCase()}`}>
-            </InfoCaption>
-          </Link>
+          {/* <Link to="/yes"> */}
+          <InfoCaption
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              history.push(`/tag/${tag.name.toLowerCase()}`);
+              window.location.reload();
+            }}
+          >
+            {`t/${tag.name.toLowerCase()}`}>
+          </InfoCaption>
+          {/* </Link> */}
         </Info>
       </Row>
     );

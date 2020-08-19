@@ -30,8 +30,7 @@ export default (props) => {
         <Grid item xs={4}>
           <GridOfCard customData={left} />
         </Grid>
-
-        <Grid item xs={4} style={{ marginLeft: props.tag ? "140px" : "20px" }}>
+        <Grid item xs={4} style={{ marginLeft: "140px" }}>
           <GridOfCard customData={right} />
         </Grid>
       </Grid>

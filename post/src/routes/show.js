@@ -38,21 +38,11 @@ router.get("/api/posts", async (req, res) => {
     });
   }
 
-  if (req.query.t) {
-    const tag = req.query.t;
-    const posts = await Post.find({ tag });
-
-    return res.send({
-      posts,
-    });
-  }
-
   if (req.query.page && req.query.limit && req.query.t) {
     const posts = await Post.paginate(
       { tag: req.query.t },
-      { sort: "testing", page: req.query.page, limit: req.query.limit }
+      { page: req.query.page, limit: req.query.limit }
     );
-
     return res.send(posts);
   }
 
@@ -90,6 +80,15 @@ router.get("/api/posts", async (req, res) => {
   if (req.query.allposts) {
     const posts = await Post.find({});
     return res.send({ posts });
+  }
+
+  if (req.query.t) {
+    const tag = req.query.t;
+    const posts = await Post.find({ tag });
+
+    return res.send({
+      posts,
+    });
   }
 
   res.send({ msg: "please specify query" });

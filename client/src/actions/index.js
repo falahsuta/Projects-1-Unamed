@@ -110,3 +110,21 @@ export const commentReply = (value) => async (dispatch) => {
     type: "COMMENT_REPLY",
   });
 };
+
+// export const getFirstPost = () => async (dispatch) => {
+//   const response = await axios.get(
+//     'http://localhost:4002/api/posts?limit=6&page=1'
+//   );
+
+// }
+export const navigate = () => {
+  return {
+    type: "NAVIGATE",
+  };
+};
+
+export const antiNavigate = () => {
+  return {
+    type: "ANTI_NAVIGATE",
+  };
+};

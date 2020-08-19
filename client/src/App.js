@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Landing from "./components/pages/Landing";
 
 import SignUpForm from "./components/form/signup/SignUpForm";
+import TagPage from "./components/pages/TagPage";
 
 export default () => {
   return (
@@ -24,7 +25,7 @@ export default () => {
               {/* <SignInForm /> */}
               {/* <Modal /> */}
               <Route exact path="/" component={Landing} />
-              <Route exact path="/yes" component={SignUpForm} />
+              <Route exact path="/tag/:tag" component={TagPage} />
             </Switch>
             {/* </div> */}
           </Router>

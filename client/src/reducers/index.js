@@ -27,7 +27,19 @@ const userReducer = (user = null, action) => {
   }
 };
 
+const showReducer = (show = true, action) => {
+  switch (action.type) {
+    case "NAVIGATE":
+      return false;
+    case "ANTI_NAVIGATE":
+      return true;
+    default:
+      return show;
+  }
+};
+
 export default combineReducers({
   post: postReducer,
   user: userReducer,
+  show: showReducer,
 });
