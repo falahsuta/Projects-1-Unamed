@@ -88,15 +88,8 @@ const Comment = ({ comment }) => {
 export default (props) => {
   return (
     <div>
-      {/* {props.comment.map((comment) => {
-        return <Comment key={comment.id} comment={comment} />;
-      })} */}
       <br />
       <br />
-      {/* <br /> */}
-      {/* {commentData.map((comment) => {
-        return <Comment key={comment.id} comment={comment} />;
-      })} */}
       {props.comment.map((comment) => {
         return <Comment key={comment.id} comment={comment} />;
       })}

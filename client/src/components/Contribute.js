@@ -39,16 +39,16 @@ export default (props) => {
     <>
       {items && items.length > 0 && (
         <Grid container direction="row" justify="center" alignItems="center">
-          {spacing("200px")}
+          {spacing("100px")}
           <Info useStyles={useD01InfoStyles}>
             <Typography color="textPrimary" variant="h5" component="h2">
               {"Your DissCuss".toUpperCase()}
             </Typography>
 
-            {spacing("40px")}
+            {spacing("10px")}
           </Info>
 
-          <Paper style={{ marginLeft: "75px" }} elevation={0}>
+          <Paper style={{ marginLeft: "65px" }} elevation={0}>
             <Picks items={items} markProps={markProps} />
           </Paper>
           {spacing("40px")}

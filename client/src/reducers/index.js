@@ -11,7 +11,6 @@ const postReducer = (post = null, action) => {
   }
 };
 
-// const userReducer = (user = { currentUser: null }, action) => {
 const userReducer = (user = null, action) => {
   switch (action.type) {
     case "FETCH_CURRENTUSER":

@@ -28,17 +28,23 @@ export default () => {
       title: "The Big Bang may be a black hole inside another universe",
       imglink:
         "https://images.unsplash.com/photo-1539321908154-04927596764d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80",
-      tag: "Space",
+      tag: "cool",
+      id: "5f48af7abadaf00740940462",
+      name: "GoGetInfo",
     },
     {
       title: "The Dark Forest Theory of the Universe",
       imglink: "https://miro.medium.com/max/1944/1*aLGt-w4m0dhJpAP6K4Abqg.jpeg",
-      tag: "Wild",
+      tag: "bizzare",
+      id: "5f487bfbafa4a1520807c12b",
+      name: "FastInfo",
     },
     {
       title: "Is the Universe Real? And Experiment Towards",
       imglink: "https://miro.medium.com/max/1200/1*zHHvldZopy8y1YcKYez57Q.jpeg",
-      tag: "Philosophy",
+      tag: "soul",
+      id: "5f48ac2ebadaf00740940456",
+      name: "FunAndNice",
     },
   ];
   const datalength = dataMiddle.length - 1;
@@ -50,6 +56,8 @@ export default () => {
           imglink={element.imglink}
           tag={element.tag}
           reference={element.reference}
+          id={element.id}
+          name={element.name}
         />
         <Divider
           style={{

@@ -9,7 +9,6 @@ import axios from "axios";
 
 export const fetchPost = (id) => async (dispatch) => {
   const response = await axios.get(`http://localhost:4002/api/posts/?p=${id}`);
-  // console.log(response.data);
   dispatch({ type: "FETCH_POST", payload: response.data });
 };
 

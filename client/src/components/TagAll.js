@@ -15,8 +15,13 @@ import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { data1, data2, data3 } from "./tag-data";
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { closeFirstPost } from "../actions";
 
 export default React.memo(function DarkRapListItem(props) {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const avatarStyles = useDynamicAvatarStyles({ size: 70 });
   // https://music-artwork.com/wp-content/uploads/2020/06/preview_artwork072.jpg
   // https://music-artwork.com/wp-content/uploads/2018/04/dec110.jpg ==>> rnb
@@ -34,7 +39,16 @@ export default React.memo(function DarkRapListItem(props) {
               <Typography color="textPrimary">{tag.name}</Typography>
             </InfoTitle>
 
-            <InfoCaption>{`t/${tag.name.toLowerCase()}`}></InfoCaption>
+            <InfoCaption
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                history.push(`/tag/${tag.name.toLowerCase()}`);
+                dispatch(closeFirstPost());
+                // window.location.reload();
+              }}
+            >
+              {`t/${tag.name.toLowerCase()}`}>
+            </InfoCaption>
           </Info>
         </Row>
       );
