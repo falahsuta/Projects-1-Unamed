@@ -19,14 +19,17 @@ const ReplyField = function (props) {
   };
 
   const sendCommentToServer = async () => {
-    const { postId } = props;
+    const { postId, userId, username } = props;
     const body = replytext;
 
     const value = {
       postId,
       body,
+      userId,
+      username,
     };
 
+    // console.log(props.userId);
     dispatch(commentPost(value));
     dispatch(fetchPost(postId));
     setReplyText("");
@@ -34,14 +37,18 @@ const ReplyField = function (props) {
   };
 
   const thisFromReplies = async () => {
-    const { commentToId } = props;
-    console.log(commentToId);
+    const { commentToId, userId, username } = props;
+    // console.log(commentToId);
     const body = replytext;
 
     const val = {
       commentToId,
       body,
+      username,
+      userId,
     };
+
+    // console.log(val);
 
     await dispatch(commentReply(val));
 

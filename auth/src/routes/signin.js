@@ -54,4 +54,16 @@ router.post(
   }
 );
 
+// router.post("/api/users/info", async (req, res) => {
+//   console.log(req.body.userId);
+//   const user = await User.findById(req.body.userId);
+
+//   if (!user) {
+//     throw new BadRequestError("No users");
+//   }
+
+//   res.send(user);
+
+// });
+
 module.exports = router;

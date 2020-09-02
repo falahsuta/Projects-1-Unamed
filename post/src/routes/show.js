@@ -9,8 +9,6 @@ const UpvotesComment = require("../models/UpvotesComment");
 const Favourite = require("../models/Favourite");
 
 router.get("/api/posts", async (req, res) => {
-  // console.log(req.currentUser);
-
   if (req.query.p && req.query.only) {
     const postId = req.query.p;
     const post = await Post.findById(postId);

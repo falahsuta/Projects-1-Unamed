@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CardContent from "@material-ui/core/CardContent";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
@@ -15,6 +15,7 @@ import ReplyField from "./ReplyField";
 import Divider from "@material-ui/core/Divider";
 import { commentData } from "./data";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 const useStyles = makeStyles({
   root: {
@@ -32,6 +33,12 @@ const Comment = ({ comment }) => {
     setShowReply(!showReply);
   };
 
+  const getRandom = () => {
+    const num = Math.random();
+    if (num < 0.5) return 0;
+    else return 1;
+  };
+
   const nestedComments = (comment.replies || []).map((comment) => {
     return <Comment key={comment._id} comment={comment} type="child" />;
   });
@@ -40,18 +47,27 @@ const Comment = ({ comment }) => {
     return <div style={{ marginTop: "3px", width: "30px", height: num }}></div>;
   };
 
+  const cap = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   return (
     <>
       <div style={{ marginLeft: "20px", marginTop: "-48px" }}>
         <Card className={classes.root} elevation={0}>
           <CardContent mt={3}>
             <Typography gutterBottom variant="body2" component="h3">
-              JoeMama33 • Sept 12
+              {`${cap(comment.username)} • Sept 12`}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               {comment.body}
             </Typography>
-            {spacing("40px")}
+            {!user.currentUser && spacing("30px")}
+            {/* {!user.currentUser && (
+              <div
+                style={{ marginTop: "3px", width: "30px", height: "40px" }}
+              ></div>
+            )} */}
             {user && user.currentUser && (
               <Grid
                 container
@@ -63,6 +79,11 @@ const Comment = ({ comment }) => {
                   <ReplyField
                     commentToId={comment._id}
                     action={replyTrueIfClicked}
+                    userId={user.currentUser.id}
+                    username={user.currentUser.username.slice(
+                      0,
+                      user.currentUser.username.indexOf("@")
+                    )}
                   />
                 ) : (
                   <>
@@ -70,7 +91,10 @@ const Comment = ({ comment }) => {
                       <ReplyRoundedIcon />
                     </ReplyTag>
 
-                    <ReplyTag buttonText="4" widthSpec={30}>
+                    <ReplyTag
+                      buttonText={getRandom().toString()}
+                      widthSpec={30}
+                    >
                       <KeyboardArrowUpOutlinedIcon />
                     </ReplyTag>
                   </>

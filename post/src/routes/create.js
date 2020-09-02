@@ -108,10 +108,12 @@ router.post("/api/posts/favourite/tags", async (req, res) => {
 });
 
 router.post("/api/posts/comments", async (req, res) => {
-  const { postId, body } = req.body;
+  const { postId, body, userId, username } = req.body;
   const comment = Comment({
     postId,
     body,
+    userId,
+    username,
     replies: [],
   });
 
@@ -126,22 +128,22 @@ router.post("/api/posts/comments", async (req, res) => {
 });
 
 router.post("/api/posts/comments/replies", async (req, res) => {
-  const { body, commentToId } = req.body;
+  const { body, commentToId, userId, username } = req.body;
 
   const comment = await Comment.findById(commentToId);
   const reply = Comment({
     body,
     commentToId,
+    userId,
+    username,
   });
-  console.log("down here: ");
-  console.log(comment);
+
   const upvotes_reply = UpvotesComment({
     commentId: reply.id,
   });
 
   comment.replies.push(reply);
 
-  console.log(comment);
   await comment.save();
   await reply.save();
   await upvotes_reply.save();

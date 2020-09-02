@@ -32,6 +32,12 @@ export default (props) => {
     setShowReply(!showReply);
   };
 
+  const getRandom = () => {
+    const num = Math.random();
+    if (num < 0.7) return 0;
+    else return 1;
+  };
+
   return (
     <Card className={classes.root}>
       <br />
@@ -67,14 +73,25 @@ export default (props) => {
                 alignItems="flex-start"
               >
                 {showReply ? (
-                  <ReplyField postId={props.id} action={replyTrueIfClicked} />
+                  <ReplyField
+                    postId={props.id}
+                    action={replyTrueIfClicked}
+                    userId={user.currentUser.id}
+                    username={user.currentUser.username.slice(
+                      0,
+                      user.currentUser.username.indexOf("@")
+                    )}
+                  />
                 ) : (
                   <>
                     <ReplyTag buttonText="Reply" action={replyTrueIfClicked}>
                       <ReplyRoundedIcon />
                     </ReplyTag>
 
-                    <ReplyTag buttonText="4" widthSpec={30}>
+                    <ReplyTag
+                      buttonText={getRandom().toString()}
+                      widthSpec={30}
+                    >
                       <KeyboardArrowUpOutlinedIcon />
                     </ReplyTag>
                   </>
