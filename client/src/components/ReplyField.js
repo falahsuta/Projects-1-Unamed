@@ -61,6 +61,8 @@ const ReplyField = function (props) {
     sendCommentToServer();
   };
 
+  const label = `Comment as ${props.username}`;
+
   return (
     <>
       <Grid
@@ -87,7 +89,7 @@ const ReplyField = function (props) {
               onChange={handleChange}
               size="small"
               id="outlined-textarea"
-              label="Comment as JoeMama.."
+              label={label}
               fullWidth
               placeholder="Your Comment.."
               multiline

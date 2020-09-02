@@ -63,11 +63,6 @@ const Comment = ({ comment }) => {
               {comment.body}
             </Typography>
             {!user.currentUser && spacing("30px")}
-            {/* {!user.currentUser && (
-              <div
-                style={{ marginTop: "3px", width: "30px", height: "40px" }}
-              ></div>
-            )} */}
             {user && user.currentUser && (
               <Grid
                 container
