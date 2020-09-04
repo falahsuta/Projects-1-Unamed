@@ -11,14 +11,12 @@ export const data1 = [
       "https://music-artwork.com/wp-content/uploads/2020/05/preview_artwork55.jpg",
     caption: "Bizzare Things Around",
   },
-  // "COOL",
   {
     name: "Cool",
     link:
       "https://music-artwork.com/wp-content/uploads/2018/04/artwork_music-2.jpg",
     caption: "The coolest thing you'd find",
   },
-  // "INFORMATIVE",
 ];
 
 export const data2 = [
@@ -28,16 +26,12 @@ export const data2 = [
       "https://music-artwork.com/wp-content/uploads/2020/08/preview_album_cover878.jpg",
     caption: "You'll find it useful",
   },
-  // "TECH"
   {
     name: "Tech",
     link:
       "https://music-artwork.com/wp-content/uploads/2020/04/preview_artwork76.jpg",
     caption: "Makes you a Techie geek",
   },
-  // "RNB",
-
-  // "STUDY_TIPS",
   {
     name: "Study-tips",
     link:
@@ -52,14 +46,12 @@ export const data3 = [
     link: "https://music-artwork.com/wp-content/uploads/2018/06/jan2018137.jpg",
     caption: "Gets you the blues feeling",
   },
-  // "SOUL",
   {
     name: "Soul",
     link:
       "https://music-artwork.com/wp-content/uploads/2018/06/march32018084.jpg",
     caption: "Anything but soul",
   },
-  // "POP",
   {
     name: "Pop",
     link:

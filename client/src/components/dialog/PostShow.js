@@ -12,9 +12,9 @@ import ReplyRoundedIcon from "@material-ui/icons/ReplyRounded";
 import KeyboardArrowUpOutlinedIcon from "@material-ui/icons/KeyboardArrowUpOutlined";
 import { useSelector } from "react-redux";
 
-import ReplyTag from "../ReplyTag";
-import Comment from "../Comment";
-import ReplyField from "../ReplyField";
+import ReplyTag from "../reply/ReplyTag";
+import Comment from "../reply/Comment";
+import ReplyField from "../reply/ReplyField";
 
 const useStyles = makeStyles({
   root: {

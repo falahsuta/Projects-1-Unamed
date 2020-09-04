@@ -1,12 +1,13 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import onClickOutside from "react-onclickoutside";
-import ReplyTag from "./ReplyTag";
 import Grid from "@material-ui/core/Grid";
-import { fetchPost, commentPost, commentReply } from "../actions";
 import { useSelector, useDispatch } from "react-redux";
 import OutsideClickHandler from "react-outside-click-handler";
 import axios from "axios";
+
+import ReplyTag from "./ReplyTag";
+import { fetchPost, commentPost, commentReply } from "../../actions";
 
 const ReplyField = function (props) {
   const dispatch = useDispatch();

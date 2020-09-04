@@ -14,15 +14,14 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import ArrowDropDownRoundedIcon from "@material-ui/icons/ArrowDropDownRounded";
-import TagAll from "./TagAll";
 import Dialog from "@material-ui/core/Dialog";
 import Slide from "@material-ui/core/Slide";
 import Paper from "@material-ui/core/Paper";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+
 import { closeFirstPost } from "../actions";
-// import { useSelector, useDispatch } from "react-redux";
-// import { navigate, antinavigate } from "../actions";
+import TagAll from "./TagAll";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;

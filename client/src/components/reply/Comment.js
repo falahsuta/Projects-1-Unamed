@@ -7,15 +7,16 @@ import Avatar from "@material-ui/core/Avatar";
 import ReplyRoundedIcon from "@material-ui/icons/ReplyRounded";
 import Button from "@material-ui/core/Button";
 import KeyboardArrowUpOutlinedIcon from "@material-ui/icons/KeyboardArrowUpOutlined";
-import ReplyTag from "./ReplyTag";
 import onClickOutside from "react-onclickoutside";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import ReplyField from "./ReplyField";
 import Divider from "@material-ui/core/Divider";
-import { commentData } from "./data";
 import { useSelector } from "react-redux";
 import axios from "axios";
+
+// import { commentData } from "./mock-data";
+import ReplyField from "./ReplyField";
+import ReplyTag from "./ReplyTag";
 
 const useStyles = makeStyles({
   root: {

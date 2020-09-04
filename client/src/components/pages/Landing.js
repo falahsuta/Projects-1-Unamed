@@ -1,18 +1,14 @@
 import React from "react";
 import { Container } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-
-import Recommend from "../Recommend";
-import Header from "../Header";
-import headerData from "../header-data";
-import Modal from "../Modal";
-import Fab from "../Fab";
-// import Comment from "../Comment";
-// import Scroll2Fetch from "../Scoll2Fetch";
-import Troll2Fetch from "../Troll2Fetch";
 import { useSelector, useDispatch } from "react-redux";
-import Contribute from "../Contribute";
+
 import { getFirstPost } from "../../actions";
+import Recommend from "../landing/Recommend";
+import Header from "../header/Header";
+import headerData from "../header/header-data";
+import PostCreate from "../dialog/PostCreate";
+import Troll2Fetch from "../landing/Troll2Fetch";
 
 export default () => {
   const timeline = useSelector((state) => state.timeline);
@@ -25,7 +21,6 @@ export default () => {
   if (!timeline) {
     getRequiredPost();
   }
-  // console.log(timeline);
 
   return (
     <>
@@ -34,11 +29,9 @@ export default () => {
           <Header post={headerData} />
         </Box>
       </Container>
-      {/* <Fab /> */}
-      <Modal />
+      <PostCreate />
       <Recommend />
       {timeline && <Troll2Fetch timeline={timeline} />}
-      {/* <Contribute /> */}
     </>
   );
 };

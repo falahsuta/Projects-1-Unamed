@@ -17,6 +17,7 @@ import Paper from "@material-ui/core/Paper";
 import { data1, data2, data3 } from "./tag-data";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+
 import { closeFirstPost } from "../actions";
 
 export default React.memo(function DarkRapListItem(props) {

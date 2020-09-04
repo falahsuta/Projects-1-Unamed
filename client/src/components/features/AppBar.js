@@ -7,12 +7,13 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Container from "@material-ui/core/Container";
 import Slide from "@material-ui/core/Slide";
-import Navbar from "./Navbar";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import { useDispatch } from "react-redux";
-import { getCurrentUser } from "../actions";
 import { useSelector } from "react-redux";
+
+import { getCurrentUser } from "../../actions";
+import Navbar from "../navbar/Navbar";
 
 const useStyles = makeStyles((props) => ({
   root: {

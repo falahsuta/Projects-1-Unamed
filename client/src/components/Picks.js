@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
+
 import GridOfCard from "./GridOfCard";
-import TagCategory from "./TagCategory";
 
 const utils = (list, chuckSize) => {
   const _ = new Array(Math.ceil(list.length / chuckSize))

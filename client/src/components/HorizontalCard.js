@@ -10,12 +10,12 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import GoogleFontLoader from "react-google-font-loader";
-import Custom from "./form/Custom";
-import Form from "./form/Form";
 import { useDispatch } from "react-redux";
 import Dialog from "@material-ui/core/Dialog";
 
 import { fetchPost, closePost } from "../actions";
+import PostShow from "./dialog/PostShow";
+import Form from "./form/Form";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -129,7 +129,7 @@ export default (props) => {
         scroll="body"
       >
         <Fade in={open}>
-          <Custom id={props.id} />
+          <PostShow id={props.id} />
         </Fade>
       </Dialog>
     </>

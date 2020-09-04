@@ -4,9 +4,9 @@ import axios from "axios";
 import { Container } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 
-import SkeletonCard from "./SkeletonCard";
-import GridOfSkeleton from "./GridOfSkeleton";
-import Picks from "./Picks";
+import SkeletonCard from "../features/SkeletonCard";
+import GridOfSkeleton from "../features/GridOfSkeleton";
+import Picks from "../Picks";
 import { useSelector, useDispatch } from "react-redux";
 
 const style = {

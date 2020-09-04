@@ -1,7 +1,5 @@
 import React from "react";
 import TagCategory from "../TagCategory";
-// import FetchTroll from "../FetchTroll";
-import Troll2Fetch from "../Troll2Fetch";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Sticky from "react-stickynode";
@@ -12,15 +10,15 @@ import {
   InfoSubtitle,
   InfoCaption,
 } from "@mui-treasury/components/info";
-import Header from "../Header";
-import headerData from "../header-data";
+import Header from "../header/Header";
+import headerData from "../header/header-data";
 import { useD01InfoStyles } from "@mui-treasury/styles/info/d01";
-
 import { Container } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-
 import { useSelector, useDispatch } from "react-redux";
+
 import { getTagPost } from "../../actions";
+import Troll2Fetch from "../landing/Troll2Fetch";
 
 export default (props) => {
   const timeline = useSelector((state) => state.timeline);

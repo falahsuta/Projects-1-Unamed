@@ -2,9 +2,9 @@ import React from "react";
 import { Container } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import DarkMode from "./components/DarkMode";
-import ScrollToTop from "./components/ScrollToTop";
-import AppBar from "./components/AppBar";
+import DarkMode from "./components/features/DarkMode";
+import AppBar from "./components/features/AppBar";
+import ScrollToTop from "./components/features/ScrollToTop";
 
 import Landing from "./components/pages/Landing";
 import TagPage from "./components/pages/TagPage";

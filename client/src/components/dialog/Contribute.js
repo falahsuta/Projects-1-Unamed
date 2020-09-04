@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Troll2Fetch from "./Troll2Fetch";
 import { useSelector, useDispatch } from "react-redux";
-import Picks from "./Picks";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -14,7 +12,9 @@ import {
   InfoCaption,
 } from "@mui-treasury/components/info";
 import { useD01InfoStyles } from "@mui-treasury/styles/info/d01";
-import { getContributePost, closeContribe } from "../actions";
+
+import Picks from "../Picks";
+import { getContributePost, closeContribe } from "../../actions";
 
 export default (props) => {
   const markProps = "markprops";
@@ -30,8 +30,6 @@ export default (props) => {
   const spacing = (num) => {
     return <div style={{ marginTop: "3px", width: "30px", height: num }}></div>;
   };
-
-  // getRequiredPost();
 
   console.log(items);
 

@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import { Container } from "@material-ui/core";
-import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { useSelector, useDispatch } from "react-redux";
 import Dialog from "@material-ui/core/Dialog";
 import Fade from "@material-ui/core/Fade";
-import Form from "./form/Form";
-import SignInForm from "./form/signin/SignInForm";
-import SignUpForm from "./form/signup/SignUpForm";
-import { signOut, closeContribe } from "../actions";
 import { useHistory } from "react-router-dom";
-import TagAll from "./TagAll";
 import Slide from "@material-ui/core/Slide";
-import Contribute from "./Contribute";
 import { useLocation } from "react-router-dom";
+
+import SignInForm from "../form/signin/SignInForm";
+import SignUpForm from "../form/signup/SignUpForm";
+import Contribute from "../dialog/Contribute";
+
+import { signOut, closeContribe } from "../../actions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
