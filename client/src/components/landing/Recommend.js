@@ -16,9 +16,9 @@ import Sticky from "react-stickynode";
 import NoSsr from "@material-ui/core/NoSsr";
 import { useDynamicAvatarStyles } from "@mui-treasury/styles/avatar/dynamic";
 
-import HorizontalCard from "../HorizontalCard";
-import TagCard from "../TagCard";
-import TagCategory from "../TagCategory";
+import HorizontalCard from "../card/HorizontalCard";
+import TagCard from "../tag/TagCard";
+import TagCategory from "../tag/TagCategory";
 
 export default () => {
   const dataMiddle = [

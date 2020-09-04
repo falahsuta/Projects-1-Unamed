@@ -1,24 +1,18 @@
 import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { Row, Column, Item } from "@mui-treasury/components/flex";
-import {
-  Info,
-  InfoTitle,
-  InfoSubtitle,
-  InfoCaption,
-} from "@mui-treasury/components/info";
+import { Info, InfoTitle, InfoCaption } from "@mui-treasury/components/info";
 import { useDynamicAvatarStyles } from "@mui-treasury/styles/avatar/dynamic";
 import { useD01InfoStyles } from "@mui-treasury/styles/info/d01";
 import Typography from "@material-ui/core/Typography";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import { Link } from "react-router-dom";
+
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { data1, data2, data3 } from "./tag-data";
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { closeFirstPost } from "../actions";
+import { closeFirstPost } from "../../actions";
 
 export default React.memo(function DarkRapListItem(props) {
   const dispatch = useDispatch();
@@ -45,7 +39,7 @@ export default React.memo(function DarkRapListItem(props) {
               onClick={() => {
                 history.push(`/tag/${tag.name.toLowerCase()}`);
                 dispatch(closeFirstPost());
-                // window.location.reload();
+                window.location.reload();
               }}
             >
               {`t/${tag.name.toLowerCase()}`}>

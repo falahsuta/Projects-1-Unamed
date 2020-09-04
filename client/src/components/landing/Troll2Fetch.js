@@ -4,10 +4,7 @@ import axios from "axios";
 import { Container } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 
-import SkeletonCard from "../features/SkeletonCard";
-import GridOfSkeleton from "../features/GridOfSkeleton";
-import Picks from "../Picks";
-import { useSelector, useDispatch } from "react-redux";
+import Picks from "../card/Picks";
 
 const style = {
   height: 30,
@@ -18,8 +15,6 @@ const style = {
 
 const Scroll2Fetch = (props) => {
   const { tag } = props;
-
-  // const timeline = useSelector((state) => state.timeline);
 
   const [items, setItems] = useState(props.timeline.docs);
   const [currIdx, setCurrIdx] = useState(2);

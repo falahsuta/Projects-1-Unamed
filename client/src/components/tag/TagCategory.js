@@ -10,8 +10,7 @@ import {
 import { useDynamicAvatarStyles } from "@mui-treasury/styles/avatar/dynamic";
 import { useD01InfoStyles } from "@mui-treasury/styles/info/d01";
 import Typography from "@material-ui/core/Typography";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import { Link } from "react-router-dom";
+
 import Grid from "@material-ui/core/Grid";
 import ArrowDropDownRoundedIcon from "@material-ui/icons/ArrowDropDownRounded";
 import Dialog from "@material-ui/core/Dialog";
@@ -20,7 +19,7 @@ import Paper from "@material-ui/core/Paper";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { closeFirstPost } from "../actions";
+import { closeFirstPost } from "../../actions";
 import TagAll from "./TagAll";
 
 const Transition = React.forwardRef(function Transition(props, ref) {

@@ -1,5 +1,4 @@
 import React from "react";
-import TagCategory from "../TagCategory";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Sticky from "react-stickynode";
@@ -19,6 +18,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getTagPost } from "../../actions";
 import Troll2Fetch from "../landing/Troll2Fetch";
+import TagCategory from "../tag/TagCategory";
 
 export default (props) => {
   const timeline = useSelector((state) => state.timeline);

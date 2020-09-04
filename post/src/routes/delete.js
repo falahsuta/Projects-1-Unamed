@@ -15,8 +15,6 @@ router.delete("/api/posts", async (req, res) => {
     if (err) return console.error(err);
     return res.send({ msg: "deleted" });
   });
-
-  // res.send({ msg: "deleted" });
 });
 
 router.delete("/api/posts/comments", async (req, res) => {
@@ -38,13 +36,8 @@ router.delete("/api/posts/upvotes", async (req, res) => {
       return element !== userId;
     });
 
-    // post_upvote.splice(post_upvote.userId.indexOf(userId), 1);
-
     await post_upvote.save();
 
-    // return res.send({
-    //   post_upvote,
-    // });
     return res.send({
       msg: "deleted",
     });
@@ -59,10 +52,6 @@ router.delete("/api/posts/upvotes", async (req, res) => {
     });
 
     await comment_upvote.save();
-
-    // return res.send({
-    //   comment_upvote,
-    // });
 
     return res.send({
       msg: "deleted",
@@ -105,43 +94,5 @@ router.delete("/api/posts/favourite/tags", async (req, res) => {
     msg: "tag not found",
   });
 });
-
-// router.post("/api/posts/favourite/tags", async (req, res) => {
-//   const { userId, tag } = req.body;
-//   const user = await Favourite.findOne({ userId });
-
-//   if (!tagAllowedValue.includes(tag)) {
-//     return res.send({
-//       msg: "tags name not allowed",
-//     });
-//   }
-
-//   if (!user) {
-//     const favourite = Favourite({
-//       userId,
-//     });
-//     favourite.tag.push(tag);
-//     favourite.save();
-
-//     return res.send({
-//       favourite,
-//     });
-//   }
-
-//   if (user.tag.includes(tag)) {
-//     return res.send({
-//       user,
-//     });
-//   }
-
-//   user.tag.push(tag);
-//   user.save();
-
-//   return res.send({
-//     user,
-//   });
-// });
-
-// 5f29a41368b7242118a8f2c5 - floating around komen ketiga
 
 module.exports = router;

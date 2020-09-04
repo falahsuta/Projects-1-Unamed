@@ -13,9 +13,8 @@ import GoogleFontLoader from "react-google-font-loader";
 import { useDispatch } from "react-redux";
 import Dialog from "@material-ui/core/Dialog";
 
-import { fetchPost, closePost } from "../actions";
-import PostShow from "./dialog/PostShow";
-import Form from "./form/Form";
+import { fetchPost, closePost } from "../../actions";
+import PostShow from "../dialog/PostShow";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -143,7 +143,15 @@ export default () => {
           </Button>
         </Grid>
         <Grid item xs align="center">
-          <Button disableRipple={true}>DissCuss</Button>
+          <Button
+            onClick={() => {
+              history.push("/");
+              window.location.reload();
+            }}
+            disableRipple={true}
+          >
+            DissCuss
+          </Button>
         </Grid>
         <Grid item xs align="end">
           {user && links(user.currentUser)}

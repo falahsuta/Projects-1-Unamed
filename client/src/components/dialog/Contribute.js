@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
+
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import { Container } from "@material-ui/core";
+
 import Typography from "@material-ui/core/Typography";
-import {
-  Info,
-  InfoTitle,
-  InfoSubtitle,
-  InfoCaption,
-} from "@mui-treasury/components/info";
+import { Info } from "@mui-treasury/components/info";
 import { useD01InfoStyles } from "@mui-treasury/styles/info/d01";
 
-import Picks from "../Picks";
+import Picks from "../card/Picks";
 import { getContributePost, closeContribe } from "../../actions";
 
 export default (props) => {
@@ -50,6 +45,27 @@ export default (props) => {
             <Picks items={items} markProps={markProps} />
           </Paper>
           {spacing("40px")}
+        </Grid>
+      )}
+      {items && items.length === 0 && (
+        <Grid
+          container
+          direction="columns"
+          justify="center"
+          alignItems="center"
+        >
+          <div
+            style={{
+              width: "400px",
+              height: "80px",
+              marginLeft: "80px",
+              marginTop: "40px",
+            }}
+          >
+            <Typography color="textPrimary" variant="h5" component="h3">
+              You have no contribution yet.
+            </Typography>
+          </div>
         </Grid>
       )}
     </>
